@@ -679,11 +679,11 @@
                     <div class="space-y-5">
                         <div>
                             <div class="text-ink/50 text-[11px] uppercase tracking-wider mb-1">Bütçe gereksinimi</div>
-                            <div id="calc-trad-cost" class="text-3xl md:text-4xl font-semibold text-ink/70">100.000 ₺</div>
+                            <div id="calc-trad-cost" class="text-3xl md:text-4xl font-semibold text-ink/70">80.000 ₺</div>
                         </div>
                         <div>
                             <div class="text-ink/50 text-[11px] uppercase tracking-wider mb-1">Üretim süresi</div>
-                            <div id="calc-trad-time" class="text-3xl md:text-4xl font-semibold text-ink/70">84 gün</div>
+                            <div id="calc-trad-time" class="text-3xl md:text-4xl font-semibold text-ink/70">56 gün</div>
                         </div>
                     </div>
                 </div>
@@ -714,7 +714,7 @@
                 <div class="text-center bg-ink rounded-2xl p-5">
                     <div class="text-[10px] uppercase tracking-[0.2em] font-medium text-white/40 mb-2">⏱ Zaman tasarrufu</div>
                     <div class="flex items-baseline justify-center gap-1">
-                        <span id="calc-saved-time" class="display text-4xl md:text-5xl font-semibold accent-text">80</span>
+                        <span id="calc-saved-time" class="display text-4xl md:text-5xl font-semibold accent-text">52</span>
                         <span class="text-white/60 text-sm">gün</span>
                     </div>
                 </div>
@@ -729,7 +729,7 @@
 
             <p class="text-center text-ink/40 text-[11px] mt-6 leading-relaxed">
                 Hesaplama temeli: geleneksel kurumsal video prodüksiyonu ortalaması<br>
-                ~25.000 ₺ / video · ~21 gün üretim süresi (kameraman + stüdyo + kurgu dahil)
+                ~20.000 ₺ / video · ~14 gün üretim süresi (kameraman + stüdyo + kurgu dahil)
             </p>
 
             <div class="text-center mt-8">
@@ -1296,8 +1296,8 @@ function updateCalc() {
     const input = document.getElementById('calc-input');
     if (!input) return;
     const count = parseInt(input.value);
-    const tradCostPerVideo = 25000;
-    const tradDaysPerVideo = 21;
+    const tradCostPerVideo = 20000;
+    const tradDaysPerVideo = 14;
     const tradCost = count * tradCostPerVideo;
     const tradTime = count * tradDaysPerVideo;
     const prezTime = count;
