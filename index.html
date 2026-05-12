@@ -327,6 +327,296 @@
             .phone-badge { font-size: 8px; padding: 3px 8px; top: 24px; }
         }
 
+        /* ============ WIZARD MODAL ============ */
+        .wiz-overlay {
+            position: fixed; inset: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: center;
+            animation: wizFadeIn 0.3s ease;
+        }
+        .wiz-overlay[hidden] { display: none; }
+        .wiz-backdrop {
+            position: absolute; inset: 0;
+            background: rgba(10,15,30,0.7);
+            backdrop-filter: blur(8px);
+        }
+        .wiz-modal {
+            position: relative;
+            width: 100%; max-width: 580px;
+            max-height: 92vh;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.4);
+            display: flex; flex-direction: column;
+            overflow: hidden;
+            margin: 16px;
+            animation: wizSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes wizFadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes wizSlideUp { from { transform: translateY(40px) scale(0.96); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+
+        .wiz-header {
+            display: flex; align-items: center; gap: 16px;
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(10,15,30,0.06);
+        }
+        .wiz-progress-container { flex: 1; }
+        .wiz-progress-bar {
+            height: 4px; background: rgba(10,15,30,0.08);
+            border-radius: 999px; overflow: hidden;
+        }
+        .wiz-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #5B5BFF, #00D4FF);
+            border-radius: 999px;
+            transition: width 0.4s ease;
+        }
+        .wiz-step-counter {
+            display: block;
+            font-size: 11px; color: rgba(10,15,30,0.5);
+            margin-top: 6px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        .wiz-close {
+            width: 32px; height: 32px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(10,15,30,0.04);
+            color: rgba(10,15,30,0.6);
+            border: none; border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .wiz-close:hover { background: rgba(10,15,30,0.08); }
+
+        .wiz-body {
+            flex: 1; overflow-y: auto;
+            padding: 28px 28px 16px;
+        }
+        .wiz-step { animation: stepIn 0.35s ease; }
+        @keyframes stepIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        .wiz-eyebrow {
+            font-size: 11px; font-weight: 600;
+            color: #5B5BFF;
+            text-transform: uppercase; letter-spacing: 0.15em;
+            margin-bottom: 8px;
+        }
+        .wiz-h2 {
+            font-size: 28px; font-weight: 600;
+            letter-spacing: -0.02em; line-height: 1.15;
+            color: #0A0F1E; margin-bottom: 6px;
+        }
+        .wiz-sub {
+            color: rgba(10,15,30,0.6);
+            font-size: 14px; margin-bottom: 24px;
+        }
+        .wiz-options {
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .wiz-option {
+            display: flex; align-items: center; gap: 14px;
+            padding: 14px 16px;
+            background: rgba(10,15,30,0.02);
+            border: 2px solid transparent;
+            border-radius: 14px;
+            text-align: left;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            color: #0A0F1E;
+        }
+        .wiz-option:hover {
+            background: rgba(91,91,255,0.04);
+            border-color: rgba(91,91,255,0.2);
+        }
+        .wiz-option-selected {
+            background: rgba(91,91,255,0.08) !important;
+            border-color: #5B5BFF !important;
+        }
+        .wiz-option-tall {
+            padding: 20px 18px;
+        }
+        .wiz-icon {
+            color: #5B5BFF;
+            flex-shrink: 0;
+        }
+        .wiz-opt-title {
+            font-weight: 600; font-size: 15px;
+            letter-spacing: -0.01em;
+        }
+        .wiz-opt-sub {
+            font-size: 12px;
+            color: rgba(10,15,30,0.55);
+            margin-top: 2px;
+        }
+        .wiz-opt-grid {
+            display: flex; gap: 6px;
+        }
+        .wiz-mini-avatar {
+            width: 38px; height: 56px;
+            background-size: cover; background-position: center;
+            border-radius: 8px;
+        }
+        .wiz-mini-icon {
+            width: 38px; height: 56px;
+            background: linear-gradient(135deg, rgba(91,91,255,0.1), rgba(0,212,255,0.1));
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Form */
+        .wiz-form { display: flex; flex-direction: column; gap: 14px; }
+        .wiz-label {
+            display: flex; flex-direction: column; gap: 6px;
+        }
+        .wiz-label > span:first-child {
+            font-size: 13px; font-weight: 500;
+            color: #0A0F1E;
+        }
+        .wiz-label input {
+            padding: 12px 14px;
+            border: 1px solid rgba(10,15,30,0.12);
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border 0.2s;
+            background: rgba(10,15,30,0.02);
+        }
+        .wiz-label input:focus {
+            outline: none;
+            border-color: #5B5BFF;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(91,91,255,0.1);
+        }
+        .wiz-optional { color: rgba(10,15,30,0.4); font-weight: 400; }
+        .wiz-disclaimer {
+            font-size: 11px;
+            color: rgba(10,15,30,0.5);
+            margin-top: 4px;
+        }
+
+        /* Summary step */
+        .wiz-script-box {
+            background: #0A0F1E;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 16px;
+            color: white;
+        }
+        .wiz-script-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 10px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase; letter-spacing: 0.1em;
+        }
+        .wiz-script-label { color: rgba(255,255,255,0.6); font-weight: 500; }
+        .wiz-script-content {
+            font-size: 14px; line-height: 1.65;
+            color: rgba(255,255,255,0.9);
+            font-style: italic;
+        }
+        .wiz-savings {
+            background: linear-gradient(135deg, rgba(91,91,255,0.06), rgba(0,212,255,0.06));
+            border: 1px solid rgba(91,91,255,0.15);
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .wiz-savings-label {
+            font-size: 11px; font-weight: 500;
+            color: rgba(10,15,30,0.6);
+            text-transform: uppercase; letter-spacing: 0.1em;
+            margin-bottom: 6px;
+        }
+        .wiz-savings-amount {
+            font-size: 20px; font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #5B5BFF, #00D4FF);
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .wiz-savings-sep { color: rgba(10,15,30,0.3); margin: 0 4px; }
+
+        .wiz-timeline {
+            background: rgba(10,15,30,0.02);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 18px;
+        }
+        .wiz-timeline-title {
+            font-size: 11px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: rgba(10,15,30,0.5);
+            margin-bottom: 12px;
+        }
+        .wiz-timeline-item {
+            display: flex; gap: 12px; padding: 8px 0;
+            border-bottom: 1px solid rgba(10,15,30,0.05);
+        }
+        .wiz-timeline-item:last-child { border-bottom: none; }
+        .wiz-timeline-dot {
+            width: 22px; height: 22px;
+            background: white; border: 1px solid rgba(10,15,30,0.15);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; font-weight: 600; color: #0A0F1E;
+            flex-shrink: 0;
+        }
+        .wiz-timeline-step { font-size: 14px; font-weight: 500; color: #0A0F1E; }
+        .wiz-timeline-time { font-size: 11px; color: rgba(10,15,30,0.5); margin-top: 2px; }
+
+        .wiz-final-cta {
+            margin-top: 8px;
+        }
+        .wiz-btn-primary {
+            width: 100%;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            background: #0A0F1E; color: white;
+            padding: 16px 22px;
+            border-radius: 12px;
+            font-weight: 500; font-size: 15px;
+            border: none; cursor: pointer; text-decoration: none;
+            transition: background 0.2s;
+        }
+        .wiz-btn-primary:hover { background: #000; }
+
+        /* Footer */
+        .wiz-footer {
+            display: flex; align-items: center; gap: 10px;
+            padding: 16px 28px 20px;
+            border-top: 1px solid rgba(10,15,30,0.06);
+            background: rgba(10,15,30,0.01);
+        }
+        .wiz-btn-back, .wiz-btn-next {
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-family: inherit; font-weight: 500; font-size: 14px;
+            cursor: pointer;
+            display: inline-flex; align-items: center; gap: 6px;
+            border: none;
+            transition: all 0.2s;
+        }
+        .wiz-btn-back {
+            background: transparent;
+            color: rgba(10,15,30,0.6);
+        }
+        .wiz-btn-back:hover { color: #0A0F1E; }
+        .wiz-btn-next {
+            background: #0A0F1E; color: white;
+        }
+        .wiz-btn-next:hover:not(:disabled) { background: #000; }
+        .wiz-btn-next:disabled {
+            opacity: 0.4; cursor: not-allowed;
+        }
+
+        @media (max-width: 640px) {
+            .wiz-modal { margin: 0; max-height: 100vh; border-radius: 0; }
+            .wiz-body { padding: 20px 18px 12px; }
+            .wiz-h2 { font-size: 24px; }
+            .wiz-footer { padding: 12px 18px; }
+        }
+
         /* Step cards with visual mockups */
         .step-card {
             background: white;
@@ -633,10 +923,10 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                    <a href="#iletisim" class="btn-on-dark">
-                        Demo Videoyu Görelim
+                    <button onclick="openWizard()" class="btn-on-dark cursor-pointer" type="button">
+                        Hemen Başla — Ücretsiz
                         <svg class="w-4 h-4"><use href="#ic-arrow"/></svg>
-                    </a>
+                    </button>
                     <a href="#nasil-calisir" class="btn-ghost-dark">
                         3 Adımda Görün
                     </a>
@@ -1649,6 +1939,378 @@ document.querySelectorAll('[role="tab"]').forEach(tab => {
             document.getElementById('tab-' + next).focus();
         }
     });
+});
+</script>
+
+<!-- ============ ONBOARDING WIZARD ============ -->
+<div id="wizard-overlay" class="wiz-overlay" role="dialog" aria-modal="true" aria-labelledby="wiz-title" hidden>
+    <div class="wiz-backdrop" onclick="closeWizard()"></div>
+    <div class="wiz-modal">
+        <!-- Header -->
+        <header class="wiz-header">
+            <div class="wiz-progress-container">
+                <div class="wiz-progress-bar"><div id="wiz-progress-fill" class="wiz-progress-fill" style="width: 16.66%"></div></div>
+                <span id="wiz-step-counter" class="wiz-step-counter">Adım 1 / 6</span>
+            </div>
+            <button onclick="closeWizard()" class="wiz-close" aria-label="Kapat">
+                <svg class="w-5 h-5"><use href="#ic-x"/></svg>
+            </button>
+        </header>
+
+        <!-- Steps -->
+        <div class="wiz-body">
+
+            <!-- STEP 1: Segment -->
+            <div class="wiz-step" data-step="1">
+                <div class="wiz-eyebrow">Başlayalım</div>
+                <h2 id="wiz-title" class="wiz-h2">Sen kimsin?</h2>
+                <p class="wiz-sub">Sana özel demo hazırlayabilmek için.</p>
+                <div class="wiz-options" data-field="segment">
+                    <button class="wiz-option" data-value="doktor" onclick="selectOption(this)">
+                        <svg class="w-5 h-5 wiz-icon"><use href="#ic-stethoscope"/></svg>
+                        <div><div class="wiz-opt-title">Doktor / Klinik</div><div class="wiz-opt-sub">Hasta eğitimi, klinik tanıtımı</div></div>
+                    </button>
+                    <button class="wiz-option" data-value="isletme" onclick="selectOption(this)">
+                        <svg class="w-5 h-5 wiz-icon"><use href="#ic-building"/></svg>
+                        <div><div class="wiz-opt-title">İşletme / Marka</div><div class="wiz-opt-sub">Ürün tanıtımı, reklam, pazarlama</div></div>
+                    </button>
+                    <button class="wiz-option" data-value="egitim" onclick="selectOption(this)">
+                        <svg class="w-5 h-5 wiz-icon"><use href="#ic-sparkles"/></svg>
+                        <div><div class="wiz-opt-title">Eğitim Kurumu</div><div class="wiz-opt-sub">Online ders, kurum tanıtımı</div></div>
+                    </button>
+                    <button class="wiz-option" data-value="bireysel" onclick="selectOption(this)">
+                        <svg class="w-5 h-5 wiz-icon"><use href="#ic-globe"/></svg>
+                        <div><div class="wiz-opt-title">Bireysel</div><div class="wiz-opt-sub">Kişisel marka, içerik üretici</div></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 2: Use Case -->
+            <div class="wiz-step" data-step="2" hidden>
+                <div class="wiz-eyebrow">Adım 2</div>
+                <h2 class="wiz-h2">Ne tür video üretmek istiyorsun?</h2>
+                <p class="wiz-sub">Birden fazla seçebilirsin.</p>
+                <div class="wiz-options" data-field="useCase" data-multi="true">
+                    <button class="wiz-option" data-value="hasta-egitim" onclick="selectOption(this)">
+                        <div><div class="wiz-opt-title">🩺 Hasta / Müşteri Eğitimi</div><div class="wiz-opt-sub">Bilgilendirme, talimat, FAQ videoları</div></div>
+                    </button>
+                    <button class="wiz-option" data-value="tanitim" onclick="selectOption(this)">
+                        <div><div class="wiz-opt-title">🎬 Ürün / Hizmet Tanıtımı</div><div class="wiz-opt-sub">Marka anlatımı, hizmet açıklaması</div></div>
+                    </button>
+                    <button class="wiz-option" data-value="sosyal" onclick="selectOption(this)">
+                        <div><div class="wiz-opt-title">📱 Sosyal Medya İçeriği</div><div class="wiz-opt-sub">Reels, TikTok, YouTube Shorts</div></div>
+                    </button>
+                    <button class="wiz-option" data-value="reklam" onclick="selectOption(this)">
+                        <div><div class="wiz-opt-title">📣 Reklam / Kampanya</div><div class="wiz-opt-sub">A/B test varyasyonları</div></div>
+                    </button>
+                    <button class="wiz-option" data-value="cokdilli" onclick="selectOption(this)">
+                        <div><div class="wiz-opt-title">🌍 Çok Dilli İçerik</div><div class="wiz-opt-sub">Aynı video, farklı diller</div></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 3: Volume -->
+            <div class="wiz-step" data-step="3" hidden>
+                <div class="wiz-eyebrow">Adım 3</div>
+                <h2 class="wiz-h2">Aylık kaç video düşünüyorsun?</h2>
+                <p class="wiz-sub">Tahminin yeterli — sonra değişebilir.</p>
+                <div class="wiz-options" data-field="volume">
+                    <button class="wiz-option" data-value="1" onclick="selectOption(this)">
+                        <div><div class="wiz-opt-title">1 video / ay</div><div class="wiz-opt-sub">Başlangıç — tek bir video deneyelim</div></div>
+                    </button>
+                    <button class="wiz-option" data-value="2-5" onclick="selectOption(this)">
+                        <div><div class="wiz-opt-title">2–5 video / ay</div><div class="wiz-opt-sub">Düzenli içerik akışı</div></div>
+                    </button>
+                    <button class="wiz-option" data-value="6-10" onclick="selectOption(this)">
+                        <div><div class="wiz-opt-title">6–10 video / ay</div><div class="wiz-opt-sub">Yoğun içerik üretimi</div></div>
+                    </button>
+                    <button class="wiz-option" data-value="10+" onclick="selectOption(this)">
+                        <div><div class="wiz-opt-title">10+ video / ay</div><div class="wiz-opt-sub">Kurumsal — özel paket konuşalım</div></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 4: Avatar Mode -->
+            <div class="wiz-step" data-step="4" hidden>
+                <div class="wiz-eyebrow">Adım 4</div>
+                <h2 class="wiz-h2">Avatar seçimi nasıl olsun?</h2>
+                <p class="wiz-sub">Hızlıca başla veya kendi yüzünü kullan.</p>
+                <div class="wiz-options" data-field="avatarMode">
+                    <button class="wiz-option wiz-option-tall" data-value="gallery" onclick="selectOption(this)">
+                        <div class="wiz-opt-grid">
+                            <div class="wiz-mini-avatar" style="background-image:url('v_sp_DXNnqACDm5j.jpg')"></div>
+                            <div class="wiz-mini-avatar" style="background-image:url('v_Avatar_video.jpg')"></div>
+                            <div class="wiz-mini-avatar" style="background-image:url('v_sp_DXm3Nj0kp5W.jpg')"></div>
+                        </div>
+                        <div><div class="wiz-opt-title">Hazır galeriden seçeyim</div><div class="wiz-opt-sub">Kameraya hiç çıkmıyorum — hemen başlayalım</div></div>
+                    </button>
+                    <button class="wiz-option wiz-option-tall" data-value="custom" onclick="selectOption(this)">
+                        <div class="wiz-mini-icon">
+                            <svg class="w-8 h-8 text-accent"><use href="#ic-sparkles"/></svg>
+                        </div>
+                        <div><div class="wiz-opt-title">Kendi avatarımı yaratalım</div><div class="wiz-opt-sub">2 dk kısa kayıt → sonra ömür boyu yazı</div></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 5: Contact -->
+            <div class="wiz-step" data-step="5" hidden>
+                <div class="wiz-eyebrow">Adım 5</div>
+                <h2 class="wiz-h2">Sana nasıl ulaşalım?</h2>
+                <p class="wiz-sub">Demo videonu 24 saatte WhatsApp'tan göndereceğiz.</p>
+                <div class="wiz-form">
+                    <label class="wiz-label">
+                        <span>İsim *</span>
+                        <input type="text" id="wiz-name" placeholder="Adın ve soyadın" oninput="updateField('name', this.value)" required>
+                    </label>
+                    <label class="wiz-label">
+                        <span>WhatsApp Numarası *</span>
+                        <input type="tel" id="wiz-whatsapp" placeholder="05XX XXX XX XX" oninput="updateField('whatsapp', this.value)" required>
+                    </label>
+                    <label class="wiz-label">
+                        <span>E-mail <span class="wiz-optional">(opsiyonel)</span></span>
+                        <input type="email" id="wiz-email" placeholder="ornek@email.com" oninput="updateField('email', this.value)">
+                    </label>
+                    <p class="wiz-disclaimer">Verilerin sadece demo iletişimi için kullanılır. KVKK uyumlu.</p>
+                </div>
+            </div>
+
+            <!-- STEP 6: Summary + WhatsApp -->
+            <div class="wiz-step" data-step="6" hidden>
+                <div class="wiz-eyebrow">🎉 Hazır</div>
+                <h2 class="wiz-h2">Demo'n yola çıkıyor.</h2>
+                <p class="wiz-sub">Sana özel hazırladığımız taslak script aşağıda — WhatsApp'tan onayını bekliyoruz.</p>
+
+                <!-- Auto-generated demo script -->
+                <div class="wiz-script-box">
+                    <div class="wiz-script-header">
+                        <span class="wiz-script-label">🎬 Demo Script Taslağı</span>
+                        <span class="wiz-script-meta" id="wiz-script-meta">~30 sn</span>
+                    </div>
+                    <div id="wiz-script-content" class="wiz-script-content">
+                        Yükleniyor...
+                    </div>
+                </div>
+
+                <!-- Savings highlight -->
+                <div class="wiz-savings" id="wiz-savings">
+                    <div class="wiz-savings-label">Bu hacimle aylık tasarrufun:</div>
+                    <div class="wiz-savings-amount">
+                        <span id="wiz-savings-money">80.000 ₺</span>
+                        <span class="wiz-savings-sep">·</span>
+                        <span id="wiz-savings-time">52 gün</span>
+                    </div>
+                </div>
+
+                <!-- Next steps timeline -->
+                <div class="wiz-timeline">
+                    <div class="wiz-timeline-title">Sonraki adımlar:</div>
+                    <div class="wiz-timeline-item">
+                        <span class="wiz-timeline-dot">1</span>
+                        <div>
+                            <div class="wiz-timeline-step">WhatsApp'ta script onayı</div>
+                            <div class="wiz-timeline-time">~2 saat içinde</div>
+                        </div>
+                    </div>
+                    <div class="wiz-timeline-item" id="wiz-timeline-upload" style="display:none">
+                        <span class="wiz-timeline-dot">2</span>
+                        <div>
+                            <div class="wiz-timeline-step">2 dk kayıt yükle (kendi avatarın için)</div>
+                            <div class="wiz-timeline-time">Detaylı rehber WhatsApp'tan</div>
+                        </div>
+                    </div>
+                    <div class="wiz-timeline-item">
+                        <span class="wiz-timeline-dot" id="wiz-timeline-3">2</span>
+                        <div>
+                            <div class="wiz-timeline-step">Avatar üretimi</div>
+                            <div class="wiz-timeline-time">24 saat</div>
+                        </div>
+                    </div>
+                    <div class="wiz-timeline-item">
+                        <span class="wiz-timeline-dot" id="wiz-timeline-4">3</span>
+                        <div>
+                            <div class="wiz-timeline-step">Video teslim — MP4</div>
+                            <div class="wiz-timeline-time">Onayın olmadan fatura yok</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wiz-final-cta">
+                    <a id="wiz-whatsapp-link" href="#" class="wiz-btn-primary">
+                        <svg class="w-5 h-5 text-green-400"><use href="#ic-wa"/></svg>
+                        WhatsApp'tan Devam Et
+                        <svg class="w-4 h-4"><use href="#ic-arrow"/></svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer (back/next) -->
+        <footer class="wiz-footer">
+            <button id="wiz-back-btn" onclick="wizBack()" class="wiz-btn-back" hidden>
+                <svg class="w-4 h-4" style="transform:rotate(180deg)"><use href="#ic-arrow"/></svg>
+                Geri
+            </button>
+            <div style="flex:1"></div>
+            <button id="wiz-next-btn" onclick="wizNext()" class="wiz-btn-next" disabled>
+                Devam
+                <svg class="w-4 h-4"><use href="#ic-arrow"/></svg>
+            </button>
+        </footer>
+    </div>
+</div>
+
+<script>
+// ============ WIZARD STATE ============
+const WhatsAppNumber = '905XXXXXXXXX'; // TODO: replace with real
+const wiz = {
+    step: 1, total: 6,
+    data: JSON.parse(localStorage.getItem('prezans-onboarding') || '{}')
+};
+const SegLabel = {doktor:'Doktor/Klinik', isletme:'İşletme/Marka', egitim:'Eğitim Kurumu', bireysel:'Bireysel'};
+const UseLabel = {'hasta-egitim':'Hasta Eğitimi', tanitim:'Tanıtım', sosyal:'Sosyal Medya', reklam:'Reklam', cokdilli:'Çok Dilli'};
+const VolLabel = {'1':'1 video/ay','2-5':'2-5 video/ay','6-10':'6-10 video/ay','10+':'10+ video/ay'};
+const VolNum = {'1':1,'2-5':3,'6-10':8,'10+':12};
+
+function openWizard() {
+    const m = document.getElementById('wiz-overlay-no-no'); // typo guard
+    const ov = document.getElementById('wiz-overlay');
+    ov.hidden = false;
+    document.body.style.overflow = 'hidden';
+    restoreState();
+    showStep(wiz.step);
+}
+function closeWizard() {
+    document.getElementById('wiz-overlay').hidden = true;
+    document.body.style.overflow = '';
+    saveState();
+}
+function showStep(n) {
+    wiz.step = n;
+    document.querySelectorAll('.wiz-step').forEach(el => el.hidden = parseInt(el.dataset.step) !== n);
+    document.getElementById('wiz-progress-fill').style.width = (n / wiz.total * 100) + '%';
+    document.getElementById('wiz-step-counter').textContent = `Adım ${n} / ${wiz.total}`;
+    document.getElementById('wiz-back-btn').hidden = (n === 1);
+    document.getElementById('wiz-next-btn').textContent = '';
+    const nb = document.getElementById('wiz-next-btn');
+    if (n === wiz.total) {
+        nb.style.display = 'none';
+        renderSummary();
+    } else {
+        nb.style.display = 'inline-flex';
+        nb.innerHTML = (n === 5 ? 'Demo Hazırla' : 'Devam') + ' <svg class="w-4 h-4"><use href="#ic-arrow"/></svg>';
+    }
+    validateStep();
+}
+function selectOption(btn) {
+    const parent = btn.parentElement;
+    const field = parent.dataset.field;
+    const multi = parent.dataset.multi === 'true';
+    if (multi) {
+        btn.classList.toggle('wiz-option-selected');
+        const selected = Array.from(parent.querySelectorAll('.wiz-option-selected')).map(b => b.dataset.value);
+        wiz.data[field] = selected;
+    } else {
+        parent.querySelectorAll('.wiz-option').forEach(b => b.classList.remove('wiz-option-selected'));
+        btn.classList.add('wiz-option-selected');
+        wiz.data[field] = btn.dataset.value;
+    }
+    validateStep();
+    saveState();
+}
+function updateField(field, val) {
+    wiz.data[field] = val.trim();
+    validateStep();
+    saveState();
+}
+function validateStep() {
+    const n = wiz.step;
+    const nb = document.getElementById('wiz-next-btn');
+    let valid = false;
+    if (n === 1) valid = !!wiz.data.segment;
+    else if (n === 2) valid = wiz.data.useCase && wiz.data.useCase.length > 0;
+    else if (n === 3) valid = !!wiz.data.volume;
+    else if (n === 4) valid = !!wiz.data.avatarMode;
+    else if (n === 5) valid = (wiz.data.name && wiz.data.name.length > 1) && (wiz.data.whatsapp && wiz.data.whatsapp.length > 9);
+    nb.disabled = !valid;
+}
+function wizNext() {
+    if (wiz.step < wiz.total) showStep(wiz.step + 1);
+}
+function wizBack() {
+    if (wiz.step > 1) showStep(wiz.step - 1);
+}
+function saveState() {
+    localStorage.setItem('prezans-onboarding', JSON.stringify(wiz.data));
+}
+function restoreState() {
+    const saved = localStorage.getItem('prezans-onboarding');
+    if (saved) {
+        wiz.data = JSON.parse(saved);
+        // Restore selections
+        for (const [field, val] of Object.entries(wiz.data)) {
+            const parent = document.querySelector(`[data-field="${field}"]`);
+            if (!parent) {
+                const input = document.getElementById('wiz-' + field);
+                if (input) input.value = val;
+                continue;
+            }
+            const vals = Array.isArray(val) ? val : [val];
+            vals.forEach(v => {
+                const b = parent.querySelector(`[data-value="${v}"]`);
+                if (b) b.classList.add('wiz-option-selected');
+            });
+        }
+    }
+}
+
+// Script generator templates
+const ScriptTemplates = {
+    'doktor|hasta-egitim': name => `Merhaba, ben Dr. ${name?.split(' ').slice(-1)[0] || '[Soyad]'}. Bugün sizinle [konu] hakkında konuşmak istiyorum. Bu süreçte dikkat edilmesi gereken üç temel nokta var: birinci, ikinci ve üçüncü. Detaylar için lütfen bizi arayın veya WhatsApp'tan ulaşın. Sağlıkla kalın.`,
+    'doktor|tanitim': name => `Merhaba, ben Dr. ${name?.split(' ').slice(-1)[0] || '[Soyad]'}. Kliniğimizde [hizmet] alanında [X yıllık] deneyimle hizmet veriyoruz. Modern teknoloji ve hasta odaklı yaklaşımımızla size en iyi sonuçları sunuyoruz. Bilgi için randevu alabilirsiniz.`,
+    'isletme|tanitim': name => `Merhaba, ben ${name || '[İsim]'}. [Marka]'da [ürün/hizmet] çözümümüzü size tanıtmak istiyorum. Pazarda fark yaratan üç özelliğimiz: [özellik 1], [özellik 2] ve [özellik 3]. Detaylı bilgi için web sitemizi ziyaret edin.`,
+    'isletme|reklam': name => `[Marka] olarak yeni [ürün/kampanya] çıktı. [Avantaj] sayesinde [hedef kitle] için ideal. Stoklarla sınırlı — bugün sipariş verin, [teslimat süresi] içinde elinizde.`,
+    'isletme|sosyal': name => `Selam! Ben ${name || '[İsim]'}, [marka]'dan. Bugün sizinle [konu] hakkında 3 ipucu paylaşmak istiyorum. Birincisi: [ipucu 1]. İkincisi: [ipucu 2]. Üçüncüsü: [ipucu 3]. Daha fazlası için takipte kal!`,
+    'egitim|tanitim': name => `Merhaba, ben ${name || '[İsim]'}. [Kurum] olarak [program] eğitimimize sizi davet ediyoruz. [X öğrenci]'ye ulaşan müfredatımız, deneyimli kadromuz ve esnek programımızla geleceğinize yatırım yapın.`,
+    'bireysel|sosyal': name => `Selam! Ben ${name || '[İsim]'}. Bu hafta sizinle [konu] hakkında konuşacağım. [Hook cümlesi]. Detaylar videoda — beğenin ve paylaşın!`,
+    'default': name => `Merhaba, ben ${name || '[İsim]'}. Bugün sizinle [konu] hakkında konuşmak istiyorum. [Ana mesaj 1]. [Ana mesaj 2]. [Kapanış ve harekete geçirici mesaj].`,
+};
+function genScript() {
+    const seg = wiz.data.segment;
+    const uses = wiz.data.useCase || [];
+    const primaryUse = uses[0] || 'tanitim';
+    const key = `${seg}|${primaryUse}`;
+    const tpl = ScriptTemplates[key] || ScriptTemplates['default'];
+    return tpl(wiz.data.name);
+}
+
+function renderSummary() {
+    // Script
+    document.getElementById('wiz-script-content').textContent = genScript();
+    // Savings
+    const v = VolNum[wiz.data.volume] || 1;
+    const money = (v * 20000).toLocaleString('tr-TR') + ' ₺';
+    const time = (v * 13) + ' gün';
+    document.getElementById('wiz-savings-money').textContent = money;
+    document.getElementById('wiz-savings-time').textContent = time;
+    // Timeline: show upload step only if custom avatar
+    const isCustom = wiz.data.avatarMode === 'custom';
+    document.getElementById('wiz-timeline-upload').style.display = isCustom ? 'flex' : 'none';
+    document.getElementById('wiz-timeline-3').textContent = isCustom ? '3' : '2';
+    document.getElementById('wiz-timeline-4').textContent = isCustom ? '4' : '3';
+    // WhatsApp link
+    const segL = SegLabel[wiz.data.segment] || wiz.data.segment;
+    const useL = (wiz.data.useCase || []).map(u => UseLabel[u]).join(', ');
+    const avatarL = isCustom ? 'Kendi avatarım (kayıt yapacağım)' : 'Hazır galeriden seçeceğim';
+    const msg = `Merhaba Prezans, demo videosu istiyorum.\n\nİsim: ${wiz.data.name}\nKategori: ${segL}\nVideo türü: ${useL}\nAylık hacim: ${VolLabel[wiz.data.volume]}\nAvatar: ${avatarL}\nE-mail: ${wiz.data.email || '—'}\n\nDevam edelim mi?`;
+    const link = `https://wa.me/${WhatsAppNumber}?text=${encodeURIComponent(msg)}`;
+    document.getElementById('wiz-whatsapp-link').href = link;
+}
+
+// ESC to close
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !document.getElementById('wiz-overlay').hidden) closeWizard();
 });
 </script>
 
