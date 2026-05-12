@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Avatar Video Prodüksiyonu | 24 Saatte Teslim — Prezans</title>
+    <meta name="description" content="Kamera karşısında konuşmadan, vakit ayırmadan profesyonel video. Doktorlar ve işletmeler için AI avatar prodüksiyon — 24 saatte teslim, 40+ dil. Ücretsiz demo isteyin.">
+    <meta name="keywords" content="AI avatar video, yapay zeka avatar, doktor video içerik, hasta eğitim videosu, AI sözcü, klinik tanıtım videosu, kameraya çıkmadan video">
+    <link rel="canonical" href="https://prezans.com/">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0A0F1E">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:site_name" content="Prezans">
+    <meta property="og:title" content="AI Avatar Video Prodüksiyonu — 24 Saatte Teslim | Prezans">
+    <meta property="og:description" content="Kameraya çıkmadan, prova yapmadan, vakit ayırmadan profesyonel video. 24 saatte hazır.">
+    <meta property="og:url" content="https://prezans.com/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Avatar Video Prodüksiyonu | Prezans">
+    <meta name="twitter:description" content="Doktor ve işletmeler için 24 saatte AI avatar video. Türkiye merkezli.">
+
+    <meta name="GPTBot" content="index, follow">
+    <meta name="ClaudeBot" content="index, follow">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A0F1E'/%3E%3Ctext x='50%25' y='62%25' text-anchor='middle' font-family='system-ui' font-size='20' font-weight='700' fill='%235B5BFF'%3EP%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#0A0F1E',
+                        cream: '#FAFAF7',
+                        accent: '#5B5BFF',
+                        accent2: '#7C7CFF',
+                        signal: '#FFD400',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; font-feature-settings: "ss01","cv11"; }
+        html { scroll-behavior: smooth; }
+        body { background: #FAFAF7; }
+        section[id] { scroll-margin-top: 90px; }
+
+        .display { letter-spacing: -0.04em; line-height: 0.95; }
+        .tight { letter-spacing: -0.02em; }
+
+        .ink-bg {
+            background: #0A0F1E;
+            position: relative;
+            overflow: hidden;
+        }
+        .mesh-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.45;
+            mix-blend-mode: screen;
+            will-change: transform;
+        }
+        .blob-1 { background: #5B5BFF; width: 500px; height: 500px; top: -10%; left: 15%; animation: float1 20s ease-in-out infinite; }
+        .blob-2 { background: #00D4FF; width: 400px; height: 400px; bottom: -10%; right: 10%; animation: float2 24s ease-in-out infinite; }
+        .blob-3 { background: #FFD400; width: 300px; height: 300px; top: 40%; left: 60%; opacity: 0.18; animation: float3 28s ease-in-out infinite; }
+
+        @keyframes float1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(60px,40px) scale(1.1); } }
+        @keyframes float2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-40px,-60px) scale(1.05); } }
+        @keyframes float3 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-30px,30px); } }
+
+        .grain {
+            position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+            opacity: 0.04; pointer-events: none; mix-blend-mode: overlay;
+        }
+
+        .accent-text {
+            background: linear-gradient(135deg, #5B5BFF 0%, #00D4FF 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-primary {
+            background: #0A0F1E; color: white;
+            border-radius: 12px; padding: 14px 26px;
+            font-weight: 500; font-size: 15px; letter-spacing: -0.01em;
+            display: inline-flex; align-items: center; gap: 8px;
+            transition: all 0.2s ease;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .btn-primary:hover { background: #000; transform: translateY(-1px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 24px rgba(91,91,255,0.25); }
+        .btn-primary svg { transition: transform 0.2s ease; }
+        .btn-primary:hover svg { transform: translateX(3px); }
+
+        .btn-secondary {
+            background: white; color: #0A0F1E;
+            border: 1px solid #E5E7EB; border-radius: 12px;
+            padding: 13px 26px; font-weight: 500; font-size: 15px;
+            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-secondary:hover { border-color: #0A0F1E; }
+
+        .btn-on-dark {
+            background: white; color: #0A0F1E;
+            border-radius: 12px; padding: 14px 26px;
+            font-weight: 500; font-size: 15px;
+            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-on-dark:hover { background: #FAFAF7; transform: translateY(-1px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+
+        .btn-ghost-dark {
+            background: rgba(255,255,255,0.05); color: white;
+            border: 1px solid rgba(255,255,255,0.15); border-radius: 12px;
+            padding: 13px 26px; font-weight: 500; font-size: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-ghost-dark:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); }
+
+        .card {
+            background: white;
+            border: 1px solid #E8E6E0;
+            border-radius: 16px;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover { border-color: #0A0F1E; transform: translateY(-2px); }
+        .card-accent-bar { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #5B5BFF, transparent); }
+
+        .glass-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+        }
+        .glass-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); }
+
+        .step-line {
+            position: absolute;
+            top: 24px;
+            left: 16%;
+            right: 16%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #D4D4D4 50%, transparent);
+            z-index: 0;
+        }
+        .step-dot {
+            width: 48px; height: 48px;
+            background: white;
+            border: 1px solid #E8E6E0;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Inter', monospace; font-weight: 600; font-size: 14px;
+            color: #0A0F1E;
+            box-shadow: 0 0 0 8px #FAFAF7, 0 4px 12px rgba(0,0,0,0.04);
+            position: relative; z-index: 1;
+        }
+
+        .tab-btn {
+            position: relative;
+            padding: 14px 4px;
+            font-weight: 500;
+            font-size: 15px;
+            color: rgba(255,255,255,0.5);
+            transition: color 0.2s ease;
+            background: transparent;
+            border: none; cursor: pointer;
+        }
+        .tab-btn[aria-selected="true"] { color: white; }
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 1px;
+            background: white;
+            transform: scaleX(0);
+            transition: transform 0.25s ease;
+            transform-origin: left;
+        }
+        .tab-btn[aria-selected="true"]::after { transform: scaleX(1); }
+
+        .faq-item summary { list-style: none; cursor: pointer; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item .chevron { transition: transform 0.25s ease; }
+        .faq-item[open] .chevron { transform: rotate(180deg); }
+        .faq-item[open] summary .indicator { background: #5B5BFF; }
+
+        :focus-visible {
+            outline: 2px solid #5B5BFF;
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+        button:focus:not(:focus-visible), a:focus:not(:focus-visible) { outline: none; }
+
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+        .skip-link { position: absolute; left: 8px; top: -50px; background: white; color: #0A0F1E; padding: 8px 16px; border-radius: 8px; font-weight: 500; z-index: 100; transition: top 0.2s; }
+        .skip-link:focus { top: 8px; }
+
+        .waveform-bar { background: #5B5BFF; opacity: 0.6; animation: wave 1.4s ease-in-out infinite; }
+        @keyframes wave {
+            0%,100% { transform: scaleY(0.3); }
+            50% { transform: scaleY(1); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+            html { scroll-behavior: auto; }
+        }
+
+        .mega-wordmark {
+            font-size: clamp(80px, 18vw, 280px);
+            font-weight: 600;
+            letter-spacing: -0.06em;
+            line-height: 0.85;
+            color: rgba(255,255,255,0.04);
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="bg-cream text-ink antialiased">
+
+<a href="#main" class="skip-link">İçeriğe atla</a>
+
+<!-- Shared SVG defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+        <symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+        <symbol id="ic-banknote" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 9v0M18 15v0"/></symbol>
+        <symbol id="ic-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0115-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 01-15 6.7L3 16"/><path d="M3 21v-5h5"/></symbol>
+        <symbol id="ic-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 14l.9 2.3L22 17l-2.1.7L19 20l-.9-2.3L16 17l2.1-.7z"/></symbol>
+        <symbol id="ic-stethoscope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a4 4 0 008 0V3"/><path d="M6 3h2M14 3h2"/><path d="M10 13v3a5 5 0 005 5 4 4 0 004-4v-2"/><circle cx="19" cy="15" r="2"/></symbol>
+        <symbol id="ic-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01M9 17h.01M15 17h.01"/></symbol>
+        <symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+        <symbol id="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+        <symbol id="ic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
+        <symbol id="ic-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></symbol>
+        <symbol id="ic-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></symbol>
+        <symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></symbol>
+        <symbol id="ic-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></symbol>
+        <symbol id="ic-camera-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.66 6H14a2 2 0 012 2v2.34"/><path d="M16 16H5a2 2 0 01-2-2V8a2 2 0 012-2h.34"/><path d="M22 9l-5 3 5 3V9z"/><line x1="2" y1="2" x2="22" y2="22"/></symbol>
+        <symbol id="ic-mic-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 005.12 2.12M15 9.34V4a3 3 0 00-5.94-.6"/><path d="M17 16.95A7 7 0 015 12v-2m14 0v2a7 7 0 01-.11 1.23"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></symbol>
+        <symbol id="ic-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+    </defs>
+</svg>
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/85 backdrop-blur-md border-b border-black/5">
+    <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+        <a href="#" class="flex items-center gap-2" aria-label="Prezans ana sayfa">
+            <div class="w-8 h-8 rounded-lg bg-ink flex items-center justify-center">
+                <span class="text-accent font-bold text-sm">P</span>
+            </div>
+            <div class="font-semibold text-[15px] tracking-tight">Prezans</div>
+        </a>
+        <div class="hidden md:flex gap-8 text-[14px] font-medium text-gray-600">
+            <a href="#nasil-calisir" class="hover:text-ink transition-colors">Nasıl Çalışır</a>
+            <a href="#kimler-icin" class="hover:text-ink transition-colors">Kimler İçin</a>
+            <a href="#demo" class="hover:text-ink transition-colors">Demo</a>
+            <a href="#sss" class="hover:text-ink transition-colors">SSS</a>
+        </div>
+        <a href="#iletisim" class="btn-primary !py-2.5 !text-[13px]">
+            Demo Talep Et
+            <svg class="w-3.5 h-3.5"><use href="#ic-arrow"/></svg>
+        </a>
+    </div>
+</nav>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="ink-bg min-h-screen flex items-center pt-24 pb-20">
+    <div class="mesh-blob blob-1"></div>
+    <div class="mesh-blob blob-2"></div>
+    <div class="mesh-blob blob-3"></div>
+    <div class="grain"></div>
+
+    <div class="relative max-w-5xl mx-auto px-5 text-center z-10">
+        <h2 class="sr-only">Türkiye'de Doktorlar ve İşletmeler için AI Avatar Video Prodüksiyon Hizmeti</h2>
+
+        <div class="inline-flex items-center gap-2 glass-card !rounded-full px-4 py-2 mb-10">
+            <svg class="w-4 h-4 text-accent2"><use href="#ic-sparkles"/></svg>
+            <span class="text-white/80 text-[13px] font-medium tracking-tight">Kameraya çıkmana gerek yok · 24 saatte teslim</span>
+        </div>
+
+        <h1 class="display text-white text-5xl md:text-7xl font-semibold mb-7">
+            Kameraya çıkmana gerek yok.<br>
+            <span class="accent-text">Vakit ayırmana da.</span>
+        </h1>
+
+        <p class="text-white/70 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed tight">
+            Yazın yeter — kamera, prova, set, kurgu yok.<br>
+            <span class="text-white">Sizi konuşturan gerçekçi avatar, 24 saatte hazır.</span>
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-center mb-16">
+            <a href="#iletisim" class="btn-on-dark">
+                Demo Videoyu Görelim
+                <svg class="w-4 h-4"><use href="#ic-arrow"/></svg>
+            </a>
+            <a href="#nasil-calisir" class="btn-ghost-dark">
+                3 Adımda Görün
+            </a>
+        </div>
+
+        <!-- Trust strip -->
+        <div class="border-t border-white/10 pt-10 mt-4">
+            <p class="text-white/40 text-[11px] uppercase tracking-[0.2em] font-medium mb-5">Pilot kullanıcılarımız arasında</p>
+            <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 opacity-60">
+                <span class="text-white/50 text-sm font-medium">Klinikler</span>
+                <span class="text-white/30">·</span>
+                <span class="text-white/50 text-sm font-medium">E-ticaret markaları</span>
+                <span class="text-white/30">·</span>
+                <span class="text-white/50 text-sm font-medium">Eğitim kurumları</span>
+                <span class="text-white/30">·</span>
+                <span class="text-white/50 text-sm font-medium">Ajanslar</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT IS PREZANS (GEO citability) -->
+<section class="bg-cream py-20 border-b border-black/5">
+    <div class="max-w-3xl mx-auto px-5">
+        <div class="flex items-center gap-3 mb-5">
+            <div class="h-px w-8 bg-ink/20"></div>
+            <span class="text-[11px] uppercase tracking-[0.2em] font-medium text-ink/50">Prezans Nedir</span>
+        </div>
+        <p class="text-ink/80 text-xl leading-relaxed tight">
+            <strong class="text-ink">Prezans</strong>, Türkiye merkezli bir <strong class="text-ink">AI avatar video prodüksiyon hizmetidir</strong>. Kamera karşısında konuşmaktan rahatsız olan veya çekim için vakti olmayan doktorlar, klinikler ve işletmeler için yapay zeka destekli, gerçekçi sunucu avatarları kullanarak <strong class="text-ink">24 saat içinde</strong> profesyonel video içerik üretir. Müşteri sadece yazılı script gönderir; kameraman, stüdyo, prova ve post-prodüksiyon süreci yoktur. Türkçe, İngilizce ve 40'tan fazla dilde üretim yapılır.
+        </p>
+    </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="bg-cream py-24">
+    <div class="max-w-6xl mx-auto px-5">
+        <div class="max-w-2xl mb-14">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="h-px w-8 bg-ink/20"></div>
+                <span class="text-[11px] uppercase tracking-[0.2em] font-medium text-ink/50">Problem</span>
+            </div>
+            <h2 class="display text-4xl md:text-5xl font-semibold">
+                Aynı üç engele<br>
+                <span class="text-ink/50">yüzlerce kez denk geldik.</span>
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+            <div class="card p-8">
+                <span class="card-accent-bar"></span>
+                <svg class="w-7 h-7 text-ink mb-6"><use href="#ic-camera-off"/></svg>
+                <h3 class="font-semibold text-xl mb-3 tight">Kamerada Donuyorum</h3>
+                <p class="text-ink/60 leading-relaxed">Kamera açıldığında ses titriyor, kelimeler kaçıyor. Doğal görünmek prova ister — prova için zaten vakit yok.</p>
+            </div>
+            <div class="card p-8">
+                <span class="card-accent-bar"></span>
+                <svg class="w-7 h-7 text-ink mb-6"><use href="#ic-clock"/></svg>
+                <h3 class="font-semibold text-xl mb-3 tight">Takvim Dolu</h3>
+                <p class="text-ink/60 leading-relaxed">İki hasta arası 10 dakika, iki toplantı arası 15. Yarım gün çekim ne pratik, ne sürdürülebilir.</p>
+            </div>
+            <div class="card p-8">
+                <span class="card-accent-bar"></span>
+                <svg class="w-7 h-7 text-ink mb-6"><use href="#ic-banknote"/></svg>
+                <h3 class="font-semibold text-xl mb-3 tight">Kurgu Uzun, Pahalı</h3>
+                <p class="text-ink/60 leading-relaxed">Çekim bittiğinde asıl mesai başlar — ses, renk, kurgu. Haftalar geçer, fatura büyür, video hâlâ hazır değil.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPARISON TABLE (Anchoring) -->
+<section class="bg-white py-24 border-y border-black/5">
+    <div class="max-w-5xl mx-auto px-5">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="h-px w-8 bg-ink/20"></div>
+                <span class="text-[11px] uppercase tracking-[0.2em] font-medium text-ink/50">Karşılaştırma</span>
+                <div class="h-px w-8 bg-ink/20"></div>
+            </div>
+            <h2 class="display text-4xl md:text-5xl font-semibold">Geleneksel prodüksiyon vs. <span class="accent-text">Prezans</span></h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5">
+            <div class="border border-ink/10 rounded-2xl p-8 bg-cream/50">
+                <p class="text-[11px] uppercase tracking-[0.2em] font-medium text-ink/40 mb-5">Geleneksel</p>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-ink/40 flex-shrink-0"><use href="#ic-x"/></svg><span class="text-ink/70">45.000 – 80.000 ₺ ortalama</span></li>
+                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-ink/40 flex-shrink-0"><use href="#ic-x"/></svg><span class="text-ink/70">2 – 4 hafta teslim süresi</span></li>
+                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-ink/40 flex-shrink-0"><use href="#ic-x"/></svg><span class="text-ink/70">Stüdyo, kameraman, kurgu ekibi</span></li>
+                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-ink/40 flex-shrink-0"><use href="#ic-x"/></svg><span class="text-ink/70">Kameraya çıkmak ve prova şart</span></li>
+                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-ink/40 flex-shrink-0"><use href="#ic-x"/></svg><span class="text-ink/70">Tek dilde üretim</span></li>
+                </ul>
+            </div>
+            <div class="border-2 border-ink rounded-2xl p-8 bg-ink text-white shadow-xl shadow-ink/20">
+                <p class="text-[11px] uppercase tracking-[0.2em] font-medium text-accent2 mb-5">Prezans</p>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-accent2 flex-shrink-0"><use href="#ic-check"/></svg><span class="text-white/90">Çekim ekibi maliyeti sıfır</span></li>
+                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-accent2 flex-shrink-0"><use href="#ic-check"/></svg><span class="text-white/90">24 saatte teslim</span></li>
+                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-accent2 flex-shrink-0"><use href="#ic-check"/></svg><span class="text-white/90">Sadece script — gerisi bize ait</span></li>
+                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-accent2 flex-shrink-0"><use href="#ic-check"/></svg><span class="text-white/90">Kameraya çıkmana gerek yok</span></li>
+                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-accent2 flex-shrink-0"><use href="#ic-check"/></svg><span class="text-white/90">40+ dilde aynı avatar</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="nasil-calisir" class="bg-cream py-24">
+    <div class="max-w-6xl mx-auto px-5">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="h-px w-8 bg-ink/20"></div>
+                <span class="text-[11px] uppercase tracking-[0.2em] font-medium text-ink/50">Süreç</span>
+                <div class="h-px w-8 bg-ink/20"></div>
+            </div>
+            <h2 class="display text-4xl md:text-5xl font-semibold mb-3">3 adımda hazır</h2>
+            <p class="text-ink/60 text-lg">Sabah siparişi, akşam teslim.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-10 relative">
+            <div class="step-line hidden md:block"></div>
+
+            <div class="relative text-center">
+                <div class="step-dot mx-auto mb-6">01</div>
+                <h3 class="font-semibold text-lg mb-2 tight">Yazın, dikte edin, sesli atın</h3>
+                <p class="text-ink/60 leading-relaxed text-[15px]">WhatsApp'tan iki cümle yeterli. Script yazımı dahil — kameraya hiç çıkmazsınız.</p>
+            </div>
+
+            <div class="relative text-center">
+                <div class="step-dot mx-auto mb-6">02</div>
+                <h3 class="font-semibold text-lg mb-2 tight">Sesinizi ve yüzünüzü seçin</h3>
+                <p class="text-ink/60 leading-relaxed text-[15px]">Hazır galerimizden 50+ karakter — kendi sesinize benzeyenler dahil. Türkçe aksan tam.</p>
+            </div>
+
+            <div class="relative text-center">
+                <div class="step-dot mx-auto mb-6">03</div>
+                <h3 class="font-semibold text-lg mb-2 tight">Yarın sabaha video</h3>
+                <p class="text-ink/60 leading-relaxed text-[15px]">MP4, 4K, tüm platformlara hazır. Onayınız çıkmadan fatura kesmiyoruz.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section id="kimler-icin" class="ink-bg py-24">
+    <div class="mesh-blob blob-2 !opacity-25"></div>
+    <div class="relative max-w-6xl mx-auto px-5 z-10">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="h-px w-8 bg-white/20"></div>
+                <span class="text-[11px] uppercase tracking-[0.2em] font-medium text-white/40">Kimler için</span>
+                <div class="h-px w-8 bg-white/20"></div>
+            </div>
+            <h2 class="display text-4xl md:text-5xl font-semibold text-white mb-3">İki segment, aynı çıkmaz</h2>
+            <p class="text-white/60 text-lg">Kamerada zorlanıyor. Vakit ayıramıyor. Yine de görünmek zorunda.</p>
+        </div>
+
+        <div role="tablist" aria-label="Hedef kitle" class="flex gap-10 justify-center mb-12 border-b border-white/10">
+            <button role="tab" id="tab-doktor" aria-selected="true" aria-controls="content-doktor" class="tab-btn" onclick="switchTab('doktor')" tabindex="0">
+                <span class="inline-flex items-center gap-2">
+                    <svg class="w-4 h-4" aria-hidden="true"><use href="#ic-stethoscope"/></svg>
+                    Doktorlar
+                </span>
+            </button>
+            <button role="tab" id="tab-isletme" aria-selected="false" aria-controls="content-isletme" class="tab-btn" onclick="switchTab('isletme')" tabindex="-1">
+                <span class="inline-flex items-center gap-2">
+                    <svg class="w-4 h-4" aria-hidden="true"><use href="#ic-building"/></svg>
+                    İşletmeler
+                </span>
+            </button>
+        </div>
+
+        <!-- Doctor regulatory bar -->
+        <div id="bar-doktor" class="glass-card p-5 mb-6 flex items-start gap-4">
+            <svg class="w-5 h-5 text-accent2 flex-shrink-0 mt-0.5"><use href="#ic-shield"/></svg>
+            <div>
+                <div class="text-white text-sm font-medium mb-1">Sağlık reklam mevzuatına uygun süreç</div>
+                <div class="text-white/60 text-sm leading-relaxed">Script kontrolünde Sağlık Bakanlığı yönetmeliği gözetilir. Yasak kelime ve abartılı vaat filtrelenir.</div>
+            </div>
+        </div>
+
+        <div id="content-doktor" role="tabpanel" aria-labelledby="tab-doktor" class="grid md:grid-cols-2 gap-5">
+            <div class="glass-card p-7">
+                <h3 class="text-white font-semibold text-lg mb-3 tight">Hasta Eğitimi</h3>
+                <p class="text-white/60 leading-relaxed text-[15px] mb-4">Aynı soruyu beşinci kez cevaplamayın. Video bir kez konuşur, hasta yüz kez izler.</p>
+                <span class="text-accent2 text-[13px] font-medium inline-flex items-center gap-1">Tekrar eden sorular azalır <svg class="w-3 h-3"><use href="#ic-arrow"/></svg></span>
+            </div>
+            <div class="glass-card p-7">
+                <h3 class="text-white font-semibold text-lg mb-3 tight">Klinik & Muayene Tanıtımı</h3>
+                <p class="text-white/60 leading-relaxed text-[15px] mb-4">Hasta randevuya gelmeden sizi tanısın. Donuk metin değil, sizin sesiniz konuşsun.</p>
+                <span class="text-accent2 text-[13px] font-medium inline-flex items-center gap-1">Randevu dönüşümü yükselir <svg class="w-3 h-3"><use href="#ic-arrow"/></svg></span>
+            </div>
+            <div class="glass-card p-7">
+                <h3 class="text-white font-semibold text-lg mb-3 tight">Sosyal Medya İçeriği</h3>
+                <p class="text-white/60 leading-relaxed text-[15px] mb-4">Aylık içerik takvimi, tek günde. Meslektaşlarınız hâlâ telefonla çekim yapıyor.</p>
+                <span class="text-accent2 text-[13px] font-medium inline-flex items-center gap-1">Uzman konumlanması <svg class="w-3 h-3"><use href="#ic-arrow"/></svg></span>
+            </div>
+            <div class="glass-card p-7">
+                <h3 class="text-white font-semibold text-lg mb-3 tight">Çok Dilli Hasta İletişimi</h3>
+                <p class="text-white/60 leading-relaxed text-[15px] mb-4">Aynı siz, dört dilde. Medikal turizm için hazır vitrin — Arapça, İngilizce, Rusça, Almanca.</p>
+                <span class="text-accent2 text-[13px] font-medium inline-flex items-center gap-1">Uluslararası erişim <svg class="w-3 h-3"><use href="#ic-arrow"/></svg></span>
+            </div>
+        </div>
+
+        <!-- Business KVKK bar -->
+        <div id="bar-isletme" class="hidden glass-card p-5 mb-6 flex items-start gap-4">
+            <svg class="w-5 h-5 text-accent2 flex-shrink-0 mt-0.5"><use href="#ic-shield"/></svg>
+            <div>
+                <div class="text-white text-sm font-medium mb-1">KVKK uyumlu süreç · Marka kullanım sözleşmesi dahil</div>
+                <div class="text-white/60 text-sm leading-relaxed">Avatar verileri 30 gün sonra silinir. Markanızın görsel kimlik kılavuzuna sadık kalınır.</div>
+            </div>
+        </div>
+
+        <div id="content-isletme" role="tabpanel" aria-labelledby="tab-isletme" class="hidden grid md:grid-cols-2 gap-5">
+            <div class="glass-card p-7">
+                <h3 class="text-white font-semibold text-lg mb-3 tight">Ürün & Hizmet Tanıtımı</h3>
+                <p class="text-white/60 leading-relaxed text-[15px] mb-4">100 ürün, 1 hafta, 1 sabit fiyat. Stüdyo bütçesi kataloğun yarısına çıkmaz.</p>
+                <span class="text-accent2 text-[13px] font-medium inline-flex items-center gap-1">Maliyet düşer, hız artar <svg class="w-3 h-3"><use href="#ic-arrow"/></svg></span>
+            </div>
+            <div class="glass-card p-7">
+                <h3 class="text-white font-semibold text-lg mb-3 tight">İç İletişim & Eğitim</h3>
+                <p class="text-white/60 leading-relaxed text-[15px] mb-4">CEO'nun zamanı stüdyoda değil. Onboarding videosu da bekleyemez. Aynı avatar her duyuruda.</p>
+                <span class="text-accent2 text-[13px] font-medium inline-flex items-center gap-1">Tutarlı kurumsal mesaj <svg class="w-3 h-3"><use href="#ic-arrow"/></svg></span>
+            </div>
+            <div class="glass-card p-7">
+                <h3 class="text-white font-semibold text-lg mb-3 tight">Reklam & Performans</h3>
+                <p class="text-white/60 leading-relaxed text-[15px] mb-4">5 hook, 5 versiyon, aynı gün. A/B testin önündeki tek engel artık prodüksiyon değil.</p>
+                <span class="text-accent2 text-[13px] font-medium inline-flex items-center gap-1">Hızlı varyasyon testi <svg class="w-3 h-3"><use href="#ic-arrow"/></svg></span>
+            </div>
+            <div class="glass-card p-7">
+                <h3 class="text-white font-semibold text-lg mb-3 tight">Çok Dilli Pazarlama</h3>
+                <p class="text-white/60 leading-relaxed text-[15px] mb-4">Tek marka yüzü, 10 pazar. Yerel ajans aramaya, yerel actor bulmaya gerek yok.</p>
+                <span class="text-accent2 text-[13px] font-medium inline-flex items-center gap-1">Global erişim, lokal his <svg class="w-3 h-3"><use href="#ic-arrow"/></svg></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DEMO -->
+<section id="demo" class="bg-cream py-24">
+    <div class="max-w-4xl mx-auto px-5">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="h-px w-8 bg-ink/20"></div>
+                <span class="text-[11px] uppercase tracking-[0.2em] font-medium text-ink/50">Demo</span>
+                <div class="h-px w-8 bg-ink/20"></div>
+            </div>
+            <h2 class="display text-4xl md:text-5xl font-semibold mb-3">Anlatmak yerine, izletelim</h2>
+            <p class="text-ink/60 text-lg">Tek karenin bin sözden iyi olduğu yer.</p>
+        </div>
+
+        <!-- Faux video player -->
+        <div class="relative bg-ink rounded-3xl overflow-hidden aspect-video shadow-2xl shadow-ink/20">
+            <div class="absolute inset-0 bg-gradient-to-br from-accent/30 via-transparent to-cyan-500/20"></div>
+            <div class="grain"></div>
+
+            <!-- Top bar -->
+            <div class="absolute top-0 left-0 right-0 p-5 flex items-center justify-between z-10">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-red-400"></span>
+                    <span class="text-white/60 text-xs font-medium">CANLI ÖRNEK</span>
+                </div>
+                <div class="text-white/40 text-xs font-mono">prezans.mp4</div>
+            </div>
+
+            <!-- Center play -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center z-10">
+                <button aria-label="Demo videoyu oynat" class="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-5 hover:bg-white/15 transition-all hover:scale-105 group">
+                    <svg class="w-8 h-8 text-white ml-1"><use href="#ic-play"/></svg>
+                </button>
+                <div class="text-white/90 text-sm font-medium mb-1">Avatar: Dr. Demo</div>
+                <div class="text-white/40 text-xs">Türkçe · 00:42</div>
+            </div>
+
+            <!-- Waveform + timeline -->
+            <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+                <div class="flex items-center gap-1 mb-3 h-10">
+                    <div class="waveform-bar w-1 rounded-full" style="height:30%; animation-delay:0s"></div>
+                    <div class="waveform-bar w-1 rounded-full" style="height:60%; animation-delay:0.1s"></div>
+                    <div class="waveform-bar w-1 rounded-full" style="height:90%; animation-delay:0.2s"></div>
+                    <div class="waveform-bar w-1 rounded-full" style="height:50%; animation-delay:0.3s"></div>
+                    <div class="waveform-bar w-1 rounded-full" style="height:80%; animation-delay:0.4s"></div>
+                    <div class="waveform-bar w-1 rounded-full" style="height:40%; animation-delay:0.5s"></div>
+                    <div class="waveform-bar w-1 rounded-full" style="height:70%; animation-delay:0.6s"></div>
+                    <div class="waveform-bar w-1 rounded-full" style="height:55%; animation-delay:0.7s"></div>
+                    <div class="waveform-bar w-1 rounded-full" style="height:85%; animation-delay:0.8s"></div>
+                    <div class="waveform-bar w-1 rounded-full" style="height:35%; animation-delay:0.9s"></div>
+                    <div class="waveform-bar w-1 rounded-full" style="height:65%; animation-delay:1s"></div>
+                    <div class="waveform-bar w-1 rounded-full" style="height:45%; animation-delay:1.1s"></div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-white/60 text-xs font-mono tabular-nums">00:14</span>
+                    <div class="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full w-1/3 bg-white/80 rounded-full"></div>
+                    </div>
+                    <span class="text-white/60 text-xs font-mono tabular-nums">00:42</span>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-center text-ink/50 text-sm mt-6">
+            Üç gerçek örnek için <a href="#iletisim" class="text-ink underline underline-offset-2 hover:text-accent">WhatsApp'tan demo</a> talep edin.
+        </p>
+    </div>
+</section>
+
+<!-- RISK REVERSAL -->
+<section class="bg-white py-20 border-y border-black/5">
+    <div class="max-w-4xl mx-auto px-5">
+        <div class="grid md:grid-cols-3 gap-5">
+            <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-cream border border-black/5 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-ink"><use href="#ic-shield"/></svg>
+                </div>
+                <div>
+                    <div class="font-semibold text-[15px] mb-1 tight">Onaylamadan fatura yok</div>
+                    <div class="text-ink/60 text-sm leading-relaxed">İlk video onayınız olmadan fatura kesmiyoruz. Beğenmezseniz ödeme yok.</div>
+                </div>
+            </div>
+            <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-cream border border-black/5 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-ink"><use href="#ic-mic-off"/></svg>
+                </div>
+                <div>
+                    <div class="font-semibold text-[15px] mb-1 tight">Konuşma zorunluluğu yok</div>
+                    <div class="text-ink/60 text-sm leading-relaxed">Yazın, dikte edin, sesli mesaj atın. Avatar konuşur, siz konuşmazsınız.</div>
+                </div>
+            </div>
+            <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-cream border border-black/5 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-ink"><use href="#ic-globe"/></svg>
+                </div>
+                <div>
+                    <div class="font-semibold text-[15px] mb-1 tight">KVKK uyumlu süreç</div>
+                    <div class="text-ink/60 text-sm leading-relaxed">Avatar verileri 30 gün sonra silinir. AB sunucularında işlenir.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="sss" class="bg-cream py-24">
+    <div class="max-w-3xl mx-auto px-5">
+        <div class="text-center mb-14">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="h-px w-8 bg-ink/20"></div>
+                <span class="text-[11px] uppercase tracking-[0.2em] font-medium text-ink/50">SSS</span>
+                <div class="h-px w-8 bg-ink/20"></div>
+            </div>
+            <h2 class="display text-4xl md:text-5xl font-semibold">Sık sorulan sorular</h2>
+        </div>
+
+        <div class="space-y-3">
+
+            <details class="faq-item bg-white rounded-2xl border border-ink/8 overflow-hidden">
+                <summary class="px-6 py-5 font-medium flex justify-between items-center hover:bg-ink/[0.02] transition">
+                    <span class="tight">AI avatar video prodüksiyonu nedir?</span>
+                    <svg class="chevron w-4 h-4 text-ink/40 flex-shrink-0 ml-4"><use href="#ic-chevron"/></svg>
+                </summary>
+                <div class="px-6 pb-5 text-ink/65 leading-relaxed text-[15px]">
+                    AI avatar video prodüksiyonu, yapay zeka teknolojisiyle gerçekçi insan görüntüsü ve sesi üreterek profesyonel video içerik oluşturma sürecidir. Geleneksel çekim ekibi, stüdyo ve kameraman gerektirmez. Prezans bu hizmeti Türkiye'de doktor ve işletmelere sunar.
+                </div>
+            </details>
+
+            <details class="faq-item bg-white rounded-2xl border border-ink/8 overflow-hidden">
+                <summary class="px-6 py-5 font-medium flex justify-between items-center hover:bg-ink/[0.02] transition">
+                    <span class="tight">Kamera karşısında rahat değilim. Bu hizmet bana uyar mı?</span>
+                    <svg class="chevron w-4 h-4 text-ink/40 flex-shrink-0 ml-4"><use href="#ic-chevron"/></svg>
+                </summary>
+                <div class="px-6 pb-5 text-ink/65 leading-relaxed text-[15px]">
+                    Tam olarak bu durum için kurulduk. Kameraya hiç çıkmazsınız. Söylemek istediklerinizi yazılı, sesli mesaj veya WhatsApp üzerinden iletmeniz yeterli — avatar konuşur, siz konuşmazsınız. Prova, ezber, set yok.
+                </div>
+            </details>
+
+            <details class="faq-item bg-white rounded-2xl border border-ink/8 overflow-hidden">
+                <summary class="px-6 py-5 font-medium flex justify-between items-center hover:bg-ink/[0.02] transition">
+                    <span class="tight">Gerçek mi görünüyor, deepfake gibi sahte mi?</span>
+                    <svg class="chevron w-4 h-4 text-ink/40 flex-shrink-0 ml-4"><use href="#ic-chevron"/></svg>
+                </summary>
+                <div class="px-6 pb-5 text-ink/65 leading-relaxed text-[15px]">
+                    HeyGen tabanlı modern AI avatar teknolojisi, doğal yüz mimikleri ve dudak senkronizasyonu ile çalışır. Pilot kullanıcılarımızla yaptığımız izleyici testlerinde çoğunluk videonun yapay zeka ile üretildiğini ilk izleyişte fark etmiyor.
+                </div>
+            </details>
+
+            <details class="faq-item bg-white rounded-2xl border border-ink/8 overflow-hidden">
+                <summary class="px-6 py-5 font-medium flex justify-between items-center hover:bg-ink/[0.02] transition">
+                    <span class="tight">Kendi sesim ve görüntüm kullanılır mı?</span>
+                    <svg class="chevron w-4 h-4 text-ink/40 flex-shrink-0 ml-4"><use href="#ic-chevron"/></svg>
+                </summary>
+                <div class="px-6 pb-5 text-ink/65 leading-relaxed text-[15px]">
+                    İsterseniz evet. Size özel avatar oluşturmak için kısa bir video kaydı yeterli. Ya da hazır karakter galerimizden birini seçebilirsiniz — ikisi de son derece gerçekçi görünür.
+                </div>
+            </details>
+
+            <details class="faq-item bg-white rounded-2xl border border-ink/8 overflow-hidden">
+                <summary class="px-6 py-5 font-medium flex justify-between items-center hover:bg-ink/[0.02] transition">
+                    <span class="tight">Script'i ben mi yazmak zorundayım?</span>
+                    <svg class="chevron w-4 h-4 text-ink/40 flex-shrink-0 ml-4"><use href="#ic-chevron"/></svg>
+                </summary>
+                <div class="px-6 pb-5 text-ink/65 leading-relaxed text-[15px]">
+                    Hayır. Ne anlatmak istediğinizi söylemeniz yeterli. Script yazımı hizmetimiz dahil. İstediğiniz değişikliği belirtin, biz düzeltiriz.
+                </div>
+            </details>
+
+            <details class="faq-item bg-white rounded-2xl border border-ink/8 overflow-hidden">
+                <summary class="px-6 py-5 font-medium flex justify-between items-center hover:bg-ink/[0.02] transition">
+                    <span class="tight">Verilerim güvende mi? KVKK uyumu var mı?</span>
+                    <svg class="chevron w-4 h-4 text-ink/40 flex-shrink-0 ml-4"><use href="#ic-chevron"/></svg>
+                </summary>
+                <div class="px-6 pb-5 text-ink/65 leading-relaxed text-[15px]">
+                    Tüm üretim AB sunucularında yapılır. Avatar üretimi için kullanılan ham veri (referans video, ses) teslim sonrası 30 gün içinde kalıcı olarak silinir. KVKK uyumlu işleme süreci uygulanır; talep ederseniz veri işleme sözleşmesi paylaşırız.
+                </div>
+            </details>
+
+            <details class="faq-item bg-white rounded-2xl border border-ink/8 overflow-hidden">
+                <summary class="px-6 py-5 font-medium flex justify-between items-center hover:bg-ink/[0.02] transition">
+                    <span class="tight">Doktorlar için sağlık reklam mevzuatı uyumu var mı?</span>
+                    <svg class="chevron w-4 h-4 text-ink/40 flex-shrink-0 ml-4"><use href="#ic-chevron"/></svg>
+                </summary>
+                <div class="px-6 pb-5 text-ink/65 leading-relaxed text-[15px]">
+                    Evet. Doktorlar için ürettiğimiz tüm scriptler Sağlık Bakanlığı tanıtım yönetmeliği gözetilerek hazırlanır. "Garanti", "kesin sonuç" gibi yasak ifadeler kullanılmaz; bilgilendirme çerçevesi tercih edilir.
+                </div>
+            </details>
+
+            <details class="faq-item bg-white rounded-2xl border border-ink/8 overflow-hidden">
+                <summary class="px-6 py-5 font-medium flex justify-between items-center hover:bg-ink/[0.02] transition">
+                    <span class="tight">Kaç günde teslim edilir?</span>
+                    <svg class="chevron w-4 h-4 text-ink/40 flex-shrink-0 ml-4"><use href="#ic-chevron"/></svg>
+                </summary>
+                <div class="px-6 pb-5 text-ink/65 leading-relaxed text-[15px]">
+                    Standart teslim 24 saattir. Acil siparişlerde 4–6 saate kadar inebiliriz. Script hazırsa daha da hızlıdır.
+                </div>
+            </details>
+
+            <details class="faq-item bg-white rounded-2xl border border-ink/8 overflow-hidden">
+                <summary class="px-6 py-5 font-medium flex justify-between items-center hover:bg-ink/[0.02] transition">
+                    <span class="tight">Kurgu, ses, renk düzeltme de dahil mi?</span>
+                    <svg class="chevron w-4 h-4 text-ink/40 flex-shrink-0 ml-4"><use href="#ic-chevron"/></svg>
+                </summary>
+                <div class="px-6 pb-5 text-ink/65 leading-relaxed text-[15px]">
+                    Evet. Teslim aldığınız video tamamen kullanıma hazırdır: ses miks, renk, altyazı, intro/outro — hepsi dahil. Geleneksel prodüksiyonda haftalar süren post-prodüksiyon aşaması burada yok; tek aşamada teslim alırsınız.
+                </div>
+            </details>
+
+            <details class="faq-item bg-white rounded-2xl border border-ink/8 overflow-hidden">
+                <summary class="px-6 py-5 font-medium flex justify-between items-center hover:bg-ink/[0.02] transition">
+                    <span class="tight">Türkçe dışında dil desteği var mı?</span>
+                    <svg class="chevron w-4 h-4 text-ink/40 flex-shrink-0 ml-4"><use href="#ic-chevron"/></svg>
+                </summary>
+                <div class="px-6 pb-5 text-ink/65 leading-relaxed text-[15px]">
+                    40'tan fazla dil desteklenmektedir. Aynı avatar Türkçe, İngilizce, Arapça, Rusça, Almanca olarak konuşabilir — medikal turizm ve uluslararası pazarlama için ideal.
+                </div>
+            </details>
+
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="iletisim" class="ink-bg py-28 relative">
+    <div class="mesh-blob blob-1 !opacity-30"></div>
+    <div class="mesh-blob blob-2 !opacity-25"></div>
+    <div class="grain"></div>
+
+    <div class="relative max-w-3xl mx-auto px-5 text-center z-10">
+        <h2 class="display text-4xl md:text-6xl font-semibold text-white mb-6">
+            İlk videonuz<br><span class="accent-text">bizden.</span>
+        </h2>
+        <p class="text-white/70 text-lg mb-10 leading-relaxed tight">
+            Konuşmana, prova yapmana, kameraya çıkmana gerek yok.<br>
+            Yazın yeter — gerisini birlikte planlayalım.
+        </p>
+
+        <a href="https://wa.me/905XXXXXXXXX?text=Merhaba%2C%20Prezans%20demo%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+           class="btn-on-dark !text-lg !px-9 !py-4"
+           aria-label="WhatsApp üzerinden mesaj gönder">
+            <svg class="w-5 h-5 text-green-500" aria-hidden="true"><use href="#ic-wa"/></svg>
+            WhatsApp'tan Konuşalım
+            <svg class="w-4 h-4"><use href="#ic-arrow"/></svg>
+        </a>
+
+        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-8 text-[13px] text-white/50">
+            <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5"><use href="#ic-check"/></svg> Genelde 2 saatte dönüyoruz</span>
+            <span class="text-white/20">·</span>
+            <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5"><use href="#ic-check"/></svg> Onaylamadan fatura yok</span>
+            <span class="text-white/20">·</span>
+            <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5"><use href="#ic-check"/></svg> Kameraya çıkış yok</span>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER with mega-wordmark -->
+<footer class="bg-ink pt-24 pb-10 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5">
+        <div class="grid md:grid-cols-4 gap-10 mb-16">
+            <div class="md:col-span-1">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
+                        <span class="text-accent2 font-bold text-sm">P</span>
+                    </div>
+                    <div class="font-semibold text-white tracking-tight">Prezans</div>
+                </div>
+                <p class="text-white/40 text-sm leading-relaxed">Kameraya gitmeyenlerin video ajansı. Türkiye merkezli AI avatar prodüksiyon.</p>
+            </div>
+            <div>
+                <div class="text-white/30 text-[11px] uppercase tracking-[0.2em] font-medium mb-4">Ürün</div>
+                <ul class="space-y-2.5 text-sm">
+                    <li><a href="#nasil-calisir" class="text-white/60 hover:text-white transition">Nasıl Çalışır</a></li>
+                    <li><a href="#demo" class="text-white/60 hover:text-white transition">Demo</a></li>
+                    <li><a href="#sss" class="text-white/60 hover:text-white transition">SSS</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="text-white/30 text-[11px] uppercase tracking-[0.2em] font-medium mb-4">Kullanım</div>
+                <ul class="space-y-2.5 text-sm">
+                    <li><a href="#kimler-icin" class="text-white/60 hover:text-white transition">Doktorlar</a></li>
+                    <li><a href="#kimler-icin" class="text-white/60 hover:text-white transition">İşletmeler</a></li>
+                    <li><a href="#kimler-icin" class="text-white/60 hover:text-white transition">Ajanslar</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="text-white/30 text-[11px] uppercase tracking-[0.2em] font-medium mb-4">İletişim</div>
+                <ul class="space-y-2.5 text-sm">
+                    <li class="text-white/60">İstanbul, Türkiye</li>
+                    <li><a href="mailto:hello@prezans.com" class="text-white/60 hover:text-white transition">hello@prezans.com</a></li>
+                    <li><a href="https://wa.me/905XXXXXXXXX" class="text-white/60 hover:text-white transition">WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Mega wordmark lockup -->
+        <div class="text-center pt-8 border-t border-white/5">
+            <div class="mega-wordmark text-center">PREZANS</div>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-center justify-between gap-3 pt-8 text-[13px] text-white/40">
+            <span>© 2025 Prezans. Tüm hakları saklıdır.</span>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition">Gizlilik</a>
+                <a href="#" class="hover:text-white transition">Şartlar</a>
+                <a href="#" class="hover:text-white transition">KVKK</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/905XXXXXXXXX?text=Merhaba%2C%20Prezans%20demo%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+   class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-xl shadow-green-500/40 transition-all hover:scale-105 z-50"
+   aria-label="WhatsApp üzerinden hızlı mesaj">
+    <svg class="w-7 h-7 text-white" aria-hidden="true"><use href="#ic-wa"/></svg>
+</a>
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://prezans.com/#org",
+      "name": "Prezans",
+      "url": "https://prezans.com/",
+      "description": "Doktorlar ve işletmeler için AI avatar video prodüksiyon hizmeti.",
+      "areaServed": {"@type": "Country", "name": "Türkiye"}
+    },
+    {
+      "@type": "Service",
+      "@id": "https://prezans.com/#service",
+      "name": "AI Avatar Video Prodüksiyonu",
+      "provider": {"@id": "https://prezans.com/#org"},
+      "serviceType": "Yapay zeka avatar video üretimi",
+      "areaServed": "TR",
+      "audience": [
+        {"@type": "Audience", "audienceType": "Doktorlar ve klinikler"},
+        {"@type": "Audience", "audienceType": "İşletmeler ve markalar"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "AI avatar video prodüksiyonu nedir?", "acceptedAnswer": {"@type": "Answer", "text": "AI avatar video prodüksiyonu, yapay zeka teknolojisiyle gerçekçi insan görüntüsü ve sesi üreterek profesyonel video içerik oluşturma sürecidir. Geleneksel çekim ekibi, stüdyo ve kameraman gerektirmez."}},
+        {"@type": "Question", "name": "Kendi sesim ve görüntüm kullanılır mı?", "acceptedAnswer": {"@type": "Answer", "text": "İsterseniz evet. Size özel avatar oluşturmak için kısa bir video kaydı yeterli. Ya da hazır karakter galerimizden birini seçebilirsiniz."}},
+        {"@type": "Question", "name": "Kaç günde teslim edilir?", "acceptedAnswer": {"@type": "Answer", "text": "Standart teslim 24 saattir. Acil siparişlerde 4-6 saate kadar inebiliriz."}},
+        {"@type": "Question", "name": "Kamera karşısında rahat değilim, bu hizmet bana uyar mı?", "acceptedAnswer": {"@type": "Answer", "text": "Tam olarak bu durum için kurulduk. Kameraya hiç çıkmazsınız. Söylemek istediklerinizi yazılı veya sesli iletirsiniz; avatar konuşur, siz konuşmazsınız."}},
+        {"@type": "Question", "name": "Türkçe dışında dil desteği var mı?", "acceptedAnswer": {"@type": "Answer", "text": "40'tan fazla dil desteklenmektedir. Aynı avatar Türkçe, İngilizce, Arapça olarak konuşabilir."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+function switchTab(tab) {
+    const tabDoktor = document.getElementById('tab-doktor');
+    const tabIsletme = document.getElementById('tab-isletme');
+    const contentDoktor = document.getElementById('content-doktor');
+    const contentIsletme = document.getElementById('content-isletme');
+    const barDoktor = document.getElementById('bar-doktor');
+    const barIsletme = document.getElementById('bar-isletme');
+
+    if (tab === 'doktor') {
+        tabDoktor.setAttribute('aria-selected', 'true');
+        tabDoktor.setAttribute('tabindex', '0');
+        tabIsletme.setAttribute('aria-selected', 'false');
+        tabIsletme.setAttribute('tabindex', '-1');
+        contentDoktor.classList.remove('hidden');
+        contentIsletme.classList.add('hidden');
+        barDoktor.classList.remove('hidden');
+        barIsletme.classList.add('hidden');
+    } else {
+        tabIsletme.setAttribute('aria-selected', 'true');
+        tabIsletme.setAttribute('tabindex', '0');
+        tabDoktor.setAttribute('aria-selected', 'false');
+        tabDoktor.setAttribute('tabindex', '-1');
+        contentDoktor.classList.add('hidden');
+        contentIsletme.classList.remove('hidden');
+        barDoktor.classList.add('hidden');
+        barIsletme.classList.remove('hidden');
+    }
+}
+
+// Keyboard navigation for tabs
+document.querySelectorAll('[role="tab"]').forEach(tab => {
+    tab.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            const next = tab.id === 'tab-doktor' ? 'isletme' : 'doktor';
+            switchTab(next);
+            document.getElementById('tab-' + next).focus();
+        }
+    });
+});
+</script>
+
+</body>
+</html>
