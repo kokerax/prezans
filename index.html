@@ -233,6 +233,99 @@
             color: rgba(255,255,255,0.04);
             user-select: none;
         }
+
+        /* Phone mockups */
+        .phone-mockup {
+            position: absolute;
+            background: #0A0F1E;
+            border: 8px solid #0A0F1E;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+            transition: transform 0.4s ease;
+        }
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 16px;
+            background: #0A0F1E;
+            border-radius: 0 0 12px 12px;
+            z-index: 5;
+        }
+        .phone-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .phone-badge {
+            position: absolute;
+            top: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 999px;
+            padding: 4px 10px;
+            color: rgba(255,255,255,0.9);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            z-index: 4;
+        }
+
+        /* Three-phone fan layout */
+        .phone-back-left {
+            width: 180px;
+            height: 320px;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%) translateX(-15%) rotate(-10deg);
+            z-index: 1;
+            opacity: 0.85;
+        }
+        .phone-center {
+            width: 220px;
+            height: 390px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) translateY(-10px);
+            z-index: 3;
+        }
+        .phone-back-right {
+            width: 180px;
+            height: 320px;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) translateX(15%) rotate(10deg);
+            z-index: 1;
+            opacity: 0.85;
+        }
+
+        .phone-mockup:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 1023px) {
+            .phone-back-left { width: 140px; height: 250px; left: 5%; transform: translateY(-50%) rotate(-8deg); }
+            .phone-center { width: 180px; height: 320px; }
+            .phone-back-right { width: 140px; height: 250px; right: 5%; transform: translateY(-50%) rotate(8deg); }
+        }
+        @media (max-width: 640px) {
+            .phone-back-left { width: 110px; height: 200px; left: 0; transform: translateY(-50%) rotate(-6deg); opacity: 0.7; }
+            .phone-center { width: 150px; height: 270px; }
+            .phone-back-right { width: 110px; height: 200px; right: 0; transform: translateY(-50%) rotate(6deg); opacity: 0.7; }
+            .phone-badge { font-size: 8px; padding: 3px 8px; top: 24px; }
+        }
     </style>
 </head>
 <body class="bg-cream text-ink antialiased">
@@ -286,44 +379,84 @@
 <main id="main">
 
 <!-- HERO -->
-<section class="ink-bg min-h-screen flex items-center pt-24 pb-20">
+<section class="ink-bg min-h-screen flex items-center pt-24 pb-16">
     <div class="mesh-blob blob-1"></div>
     <div class="mesh-blob blob-2"></div>
     <div class="mesh-blob blob-3"></div>
     <div class="grain"></div>
 
-    <div class="relative max-w-5xl mx-auto px-5 text-center z-10">
+    <div class="relative max-w-7xl mx-auto px-5 z-10 w-full">
         <h2 class="sr-only">Türkiye'de Doktorlar ve İşletmeler için AI Avatar Video Prodüksiyon Hizmeti</h2>
 
-        <div class="inline-flex items-center gap-2 glass-card !rounded-full px-4 py-2 mb-10">
-            <svg class="w-4 h-4 text-accent2"><use href="#ic-sparkles"/></svg>
-            <span class="text-white/80 text-[13px] font-medium tracking-tight">Bir kayıt, sonsuz video · 24 saatte teslim</span>
-        </div>
+        <div class="grid lg:grid-cols-12 gap-10 items-center mb-12">
+            <!-- LEFT: Text -->
+            <div class="lg:col-span-7 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 glass-card !rounded-full px-4 py-2 mb-8">
+                    <svg class="w-4 h-4 text-accent2"><use href="#ic-sparkles"/></svg>
+                    <span class="text-white/80 text-[13px] font-medium tracking-tight">Bir kayıt, sonsuz video · 24 saatte teslim</span>
+                </div>
 
-        <h1 class="display text-white text-5xl md:text-7xl font-semibold mb-7">
-            Bir kez çek.<br>
-            <span class="accent-text">Sonra hep yazı.</span>
-        </h1>
+                <h1 class="display text-white text-5xl md:text-6xl xl:text-7xl font-semibold mb-7">
+                    Bir kez çek.<br>
+                    <span class="accent-text">Sonra hep yazı.</span>
+                </h1>
 
-        <p class="text-white/70 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed tight">
-            Kısa bir kayıt ile gerçekçi avatarınızı oluşturuyoruz. Sonraki tüm videolar sadece yazıyla — prova, set, kurgu yok.<br>
-            <span class="text-white">Veya hazır avatar galerimizden seçin, hiç kameraya çıkmayın.</span>
-        </p>
+                <p class="text-white/70 text-lg md:text-xl max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed tight">
+                    Kısa bir kayıt ile gerçekçi avatarınızı oluşturuyoruz. Sonraki tüm videolar sadece yazıyla — prova, set, kurgu yok.
+                </p>
 
-        <div class="flex flex-col sm:flex-row gap-3 justify-center mb-16">
-            <a href="#iletisim" class="btn-on-dark">
-                Demo Videoyu Görelim
-                <svg class="w-4 h-4"><use href="#ic-arrow"/></svg>
-            </a>
-            <a href="#nasil-calisir" class="btn-ghost-dark">
-                3 Adımda Görün
-            </a>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                    <a href="#iletisim" class="btn-on-dark">
+                        Demo Videoyu Görelim
+                        <svg class="w-4 h-4"><use href="#ic-arrow"/></svg>
+                    </a>
+                    <a href="#nasil-calisir" class="btn-ghost-dark">
+                        3 Adımda Görün
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGHT: Phone mockups -->
+            <div class="lg:col-span-5 relative h-[460px] md:h-[540px] flex items-center justify-center">
+                <!-- Phone back-left -->
+                <div class="phone-mockup phone-back-left">
+                    <video class="phone-video" autoplay muted loop playsinline preload="metadata" poster="prezans-poster.jpg">
+                        <source src="hero-video-1.mp4" type="video/mp4">
+                    </video>
+                    <div class="phone-badge">
+                        <span class="w-1 h-1 rounded-full bg-red-400"></span>
+                        <span>Doktor</span>
+                    </div>
+                </div>
+
+                <!-- Phone center (prominent) -->
+                <div class="phone-mockup phone-center">
+                    <video class="phone-video" autoplay muted loop playsinline preload="metadata" poster="hero-poster-2.jpg">
+                        <source src="hero-video-2.mp4" type="video/mp4">
+                    </video>
+                    <div class="phone-badge">
+                        <span class="w-1 h-1 rounded-full bg-red-400 animate-pulse"></span>
+                        <span>AI Avatar</span>
+                    </div>
+                </div>
+
+                <!-- Phone back-right -->
+                <div class="phone-mockup phone-back-right">
+                    <video class="phone-video" autoplay muted loop playsinline preload="metadata" poster="prezans-poster.jpg">
+                        <source src="hero-video-1.mp4" type="video/mp4">
+                    </video>
+                    <div class="phone-badge">
+                        <span class="w-1 h-1 rounded-full bg-red-400"></span>
+                        <span>Marka</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Trust strip -->
-        <div class="border-t border-white/10 pt-10 mt-4">
-            <p class="text-white/40 text-[11px] uppercase tracking-[0.2em] font-medium mb-5">Pilot kullanıcılarımız arasında</p>
-            <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 opacity-60">
+        <div class="border-t border-white/10 pt-8 mt-4">
+            <p class="text-white/40 text-[11px] uppercase tracking-[0.2em] font-medium mb-5 text-center lg:text-left">Pilot kullanıcılarımız arasında</p>
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-x-10 gap-y-4 opacity-60">
                 <span class="text-white/50 text-sm font-medium">Klinikler</span>
                 <span class="text-white/30">·</span>
                 <span class="text-white/50 text-sm font-medium">E-ticaret markaları</span>
@@ -387,37 +520,86 @@
 </section>
 
 <!-- COMPARISON TABLE (Anchoring) -->
-<section class="bg-white py-24 border-y border-black/5">
-    <div class="max-w-5xl mx-auto px-5">
+<section class="bg-white py-24 border-y border-black/5 relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-5 relative">
         <div class="text-center max-w-2xl mx-auto mb-14">
             <div class="flex items-center justify-center gap-3 mb-4">
                 <div class="h-px w-8 bg-ink/20"></div>
                 <span class="text-[11px] uppercase tracking-[0.2em] font-medium text-ink/50">Karşılaştırma</span>
                 <div class="h-px w-8 bg-ink/20"></div>
             </div>
-            <h2 class="display text-4xl md:text-5xl font-semibold">Geleneksel prodüksiyon vs. <span class="accent-text">Prezans</span></h2>
+            <h2 class="display text-4xl md:text-5xl font-semibold mb-4">Geleneksel prodüksiyon<br>vs. <span class="accent-text">Prezans</span></h2>
+            <p class="text-ink/60 text-lg">Aynı sonuç. Tek farkı: bir tarafta haftalar ve on binler. Diğerinde 24 saat.</p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-5">
-            <div class="border border-ink/10 rounded-2xl p-8 bg-cream/50">
-                <p class="text-[11px] uppercase tracking-[0.2em] font-medium text-ink/40 mb-5">Geleneksel</p>
-                <ul class="space-y-4">
-                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-ink/40 flex-shrink-0"><use href="#ic-x"/></svg><span class="text-ink/70">45.000 – 80.000 ₺ ortalama</span></li>
-                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-ink/40 flex-shrink-0"><use href="#ic-x"/></svg><span class="text-ink/70">2 – 4 hafta teslim süresi</span></li>
-                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-ink/40 flex-shrink-0"><use href="#ic-x"/></svg><span class="text-ink/70">Stüdyo, kameraman, kurgu ekibi</span></li>
-                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-ink/40 flex-shrink-0"><use href="#ic-x"/></svg><span class="text-ink/70">Kameraya çıkmak ve prova şart</span></li>
-                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-ink/40 flex-shrink-0"><use href="#ic-x"/></svg><span class="text-ink/70">Tek dilde üretim</span></li>
+        <div class="grid md:grid-cols-2 gap-5 relative">
+            <!-- VS divider -->
+            <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-ink items-center justify-center z-20 shadow-lg">
+                <span class="text-ink font-bold text-xs tracking-tight">VS</span>
+            </div>
+
+            <!-- Geleneksel -->
+            <div class="border border-ink/10 rounded-2xl p-8 bg-cream/50 relative">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <p class="text-[11px] uppercase tracking-[0.2em] font-medium text-ink/40 mb-1">Geleneksel</p>
+                        <p class="font-semibold text-ink/70 text-lg tight">Prodüksiyon ajansı</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-2xl font-semibold text-ink/40 line-through">45-80K ₺</div>
+                        <div class="text-[11px] text-ink/40 uppercase tracking-wider">video başı</div>
+                    </div>
+                </div>
+                <ul class="space-y-3.5">
+                    <li class="flex items-start gap-3 py-2 border-b border-ink/5"><svg class="w-4 h-4 text-ink/40 flex-shrink-0 mt-0.5"><use href="#ic-x"/></svg><span class="text-ink/70 text-[15px]">2 – 4 hafta teslim süresi</span></li>
+                    <li class="flex items-start gap-3 py-2 border-b border-ink/5"><svg class="w-4 h-4 text-ink/40 flex-shrink-0 mt-0.5"><use href="#ic-x"/></svg><span class="text-ink/70 text-[15px]">Stüdyo, kameraman, kurgu ekibi</span></li>
+                    <li class="flex items-start gap-3 py-2 border-b border-ink/5"><svg class="w-4 h-4 text-ink/40 flex-shrink-0 mt-0.5"><use href="#ic-x"/></svg><span class="text-ink/70 text-[15px]">Her video için kameraya çıkmak şart</span></li>
+                    <li class="flex items-start gap-3 py-2 border-b border-ink/5"><svg class="w-4 h-4 text-ink/40 flex-shrink-0 mt-0.5"><use href="#ic-x"/></svg><span class="text-ink/70 text-[15px]">Prova, ezber, performans baskısı</span></li>
+                    <li class="flex items-start gap-3 py-2 border-b border-ink/5"><svg class="w-4 h-4 text-ink/40 flex-shrink-0 mt-0.5"><use href="#ic-x"/></svg><span class="text-ink/70 text-[15px]">Çekim sonrası 1-2 hafta kurgu bekleyiş</span></li>
+                    <li class="flex items-start gap-3 py-2 border-b border-ink/5"><svg class="w-4 h-4 text-ink/40 flex-shrink-0 mt-0.5"><use href="#ic-x"/></svg><span class="text-ink/70 text-[15px]">Tek dilde üretim</span></li>
+                    <li class="flex items-start gap-3 py-2"><svg class="w-4 h-4 text-ink/40 flex-shrink-0 mt-0.5"><use href="#ic-x"/></svg><span class="text-ink/70 text-[15px]">Bir cümle değişti = yeniden çekim</span></li>
                 </ul>
             </div>
-            <div class="border-2 border-ink rounded-2xl p-8 bg-ink text-white shadow-xl shadow-ink/20">
-                <p class="text-[11px] uppercase tracking-[0.2em] font-medium text-accent2 mb-5">Prezans</p>
-                <ul class="space-y-4">
-                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-accent2 flex-shrink-0"><use href="#ic-check"/></svg><span class="text-white/90">Çekim ekibi maliyeti sıfır</span></li>
-                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-accent2 flex-shrink-0"><use href="#ic-check"/></svg><span class="text-white/90">24 saatte teslim</span></li>
-                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-accent2 flex-shrink-0"><use href="#ic-check"/></svg><span class="text-white/90">Sadece script — gerisi bize ait</span></li>
-                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-accent2 flex-shrink-0"><use href="#ic-check"/></svg><span class="text-white/90">Kameraya çıkmana gerek yok</span></li>
-                    <li class="flex items-center gap-3"><svg class="w-4 h-4 text-accent2 flex-shrink-0"><use href="#ic-check"/></svg><span class="text-white/90">40+ dilde aynı avatar</span></li>
-                </ul>
+
+            <!-- Prezans -->
+            <div class="rounded-2xl p-[2px] bg-gradient-to-br from-accent via-accent2 to-cyan-400 shadow-2xl shadow-accent/20 relative">
+                <div class="bg-ink rounded-[14px] p-8 h-full">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <p class="text-[11px] uppercase tracking-[0.2em] font-medium text-accent2 mb-1">Prezans</p>
+                            <p class="font-semibold text-white text-lg tight">AI avatar prodüksiyon</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-semibold accent-text">%80 az</div>
+                            <div class="text-[11px] text-white/40 uppercase tracking-wider">maliyet</div>
+                        </div>
+                    </div>
+                    <ul class="space-y-3.5">
+                        <li class="flex items-start gap-3 py-2 border-b border-white/5"><svg class="w-4 h-4 text-accent2 flex-shrink-0 mt-0.5"><use href="#ic-check"/></svg><span class="text-white/90 text-[15px]">24 saatte teslim</span></li>
+                        <li class="flex items-start gap-3 py-2 border-b border-white/5"><svg class="w-4 h-4 text-accent2 flex-shrink-0 mt-0.5"><use href="#ic-check"/></svg><span class="text-white/90 text-[15px]">Sadece script — gerisi bize ait</span></li>
+                        <li class="flex items-start gap-3 py-2 border-b border-white/5"><svg class="w-4 h-4 text-accent2 flex-shrink-0 mt-0.5"><use href="#ic-check"/></svg><span class="text-white/90 text-[15px]">Bir kez kayıt, sonsuz video</span></li>
+                        <li class="flex items-start gap-3 py-2 border-b border-white/5"><svg class="w-4 h-4 text-accent2 flex-shrink-0 mt-0.5"><use href="#ic-check"/></svg><span class="text-white/90 text-[15px]">Prova, ezber, kamera stresi yok</span></li>
+                        <li class="flex items-start gap-3 py-2 border-b border-white/5"><svg class="w-4 h-4 text-accent2 flex-shrink-0 mt-0.5"><use href="#ic-check"/></svg><span class="text-white/90 text-[15px]">Tek aşamada teslim — kurgu dahil</span></li>
+                        <li class="flex items-start gap-3 py-2 border-b border-white/5"><svg class="w-4 h-4 text-accent2 flex-shrink-0 mt-0.5"><use href="#ic-check"/></svg><span class="text-white/90 text-[15px]">40+ dilde aynı avatar</span></li>
+                        <li class="flex items-start gap-3 py-2"><svg class="w-4 h-4 text-accent2 flex-shrink-0 mt-0.5"><use href="#ic-check"/></svg><span class="text-white/90 text-[15px]">Script güncelle, yeni video çıksın</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick stat row below -->
+        <div class="grid grid-cols-3 gap-4 mt-10 max-w-2xl mx-auto">
+            <div class="text-center">
+                <div class="text-3xl md:text-4xl font-semibold accent-text">14 gün</div>
+                <div class="text-ink/50 text-xs mt-1 uppercase tracking-wider">→ 24 saat</div>
+            </div>
+            <div class="text-center border-x border-ink/10">
+                <div class="text-3xl md:text-4xl font-semibold accent-text">60K ₺</div>
+                <div class="text-ink/50 text-xs mt-1 uppercase tracking-wider">→ sabit fiyat</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl md:text-4xl font-semibold accent-text">5 ekip</div>
+                <div class="text-ink/50 text-xs mt-1 uppercase tracking-wider">→ tek script</div>
             </div>
         </div>
     </div>
