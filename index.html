@@ -326,6 +326,41 @@
             .phone-back-right { width: 110px; height: 200px; right: 0; transform: translateY(-50%) rotate(6deg); opacity: 0.7; }
             .phone-badge { font-size: 8px; padding: 3px 8px; top: 24px; }
         }
+
+        /* Gallery phones */
+        .gallery-phone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .gallery-frame {
+            position: relative;
+            width: 100%;
+            max-width: 240px;
+            aspect-ratio: 9 / 16;
+            background: #0A0F1E;
+            border: 6px solid #0A0F1E;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-frame:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 50px -10px rgba(0,0,0,0.35);
+        }
+        .gallery-frame::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 14px;
+            background: #0A0F1E;
+            border-radius: 0 0 10px 10px;
+            z-index: 5;
+        }
     </style>
 </head>
 <body class="bg-cream text-ink antialiased">
@@ -418,10 +453,10 @@
 
             <!-- RIGHT: Phone mockups -->
             <div class="lg:col-span-5 relative h-[460px] md:h-[540px] flex items-center justify-center">
-                <!-- Phone back-left -->
+                <!-- Phone back-left: Doctor -->
                 <div class="phone-mockup phone-back-left">
-                    <video class="phone-video" autoplay muted loop playsinline preload="metadata" poster="prezans-poster.jpg">
-                        <source src="hero-video-1.mp4" type="video/mp4">
+                    <video class="phone-video" autoplay muted loop playsinline preload="metadata" poster="v_sp_DXNnqACDm5j.jpg">
+                        <source src="v_sp_DXNnqACDm5j.mp4" type="video/mp4">
                     </video>
                     <div class="phone-badge">
                         <span class="w-1 h-1 rounded-full bg-red-400"></span>
@@ -429,10 +464,10 @@
                     </div>
                 </div>
 
-                <!-- Phone center (prominent) -->
+                <!-- Phone center: AI Avatar (prominent) -->
                 <div class="phone-mockup phone-center">
-                    <video class="phone-video" autoplay muted loop playsinline preload="metadata" poster="hero-poster-2.jpg">
-                        <source src="hero-video-2.mp4" type="video/mp4">
+                    <video class="phone-video" autoplay muted loop playsinline preload="metadata" poster="v_Avatar_video.jpg">
+                        <source src="v_Avatar_video.mp4" type="video/mp4">
                     </video>
                     <div class="phone-badge">
                         <span class="w-1 h-1 rounded-full bg-red-400 animate-pulse"></span>
@@ -440,10 +475,10 @@
                     </div>
                 </div>
 
-                <!-- Phone back-right -->
+                <!-- Phone back-right: Marka -->
                 <div class="phone-mockup phone-back-right">
-                    <video class="phone-video" autoplay muted loop playsinline preload="metadata" poster="prezans-poster.jpg">
-                        <source src="hero-video-1.mp4" type="video/mp4">
+                    <video class="phone-video" autoplay muted loop playsinline preload="metadata" poster="v_sp_DXm3Nj0kp5W.jpg">
+                        <source src="v_sp_DXm3Nj0kp5W.mp4" type="video/mp4">
                     </video>
                     <div class="phone-badge">
                         <span class="w-1 h-1 rounded-full bg-red-400"></span>
@@ -792,7 +827,44 @@
             </div>
         </div>
 
-        <p class="text-center text-ink/50 text-sm mt-10">
+        <!-- Gallery: 3 more examples -->
+        <div class="mt-20">
+            <div class="text-center mb-10">
+                <p class="text-[11px] uppercase tracking-[0.2em] font-medium text-ink/50 mb-2">Daha fazla örnek</p>
+                <h3 class="display text-2xl md:text-3xl font-semibold tight">Farklı sektörler, aynı kalite</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="gallery-phone">
+                    <div class="gallery-frame">
+                        <video class="phone-video" autoplay muted loop playsinline preload="metadata" poster="v_sp_DXSxnE3icXN.jpg">
+                            <source src="v_sp_DXSxnE3icXN.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <p class="text-center mt-3 text-ink/60 text-xs uppercase tracking-wider font-medium">Sağlık · Tanıtım</p>
+                </div>
+
+                <div class="gallery-phone">
+                    <div class="gallery-frame">
+                        <video class="phone-video" autoplay muted loop playsinline preload="metadata" poster="v_sp_DXQP24pj5YB.jpg">
+                            <source src="v_sp_DXQP24pj5YB.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <p class="text-center mt-3 text-ink/60 text-xs uppercase tracking-wider font-medium">Eğitim · Bilgilendirme</p>
+                </div>
+
+                <div class="gallery-phone">
+                    <div class="gallery-frame">
+                        <video class="phone-video" autoplay muted loop playsinline preload="metadata" poster="v_sp_DXprE0bDlUM.jpg">
+                            <source src="v_sp_DXprE0bDlUM.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <p class="text-center mt-3 text-ink/60 text-xs uppercase tracking-wider font-medium">Marka · Reklam</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-center text-ink/50 text-sm mt-12">
             Daha fazla örnek için <a href="#iletisim" class="text-ink underline underline-offset-2 hover:text-accent">WhatsApp'tan demo</a> talep edin.
         </p>
     </div>
