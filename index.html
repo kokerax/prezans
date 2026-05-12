@@ -1943,7 +1943,7 @@ document.querySelectorAll('[role="tab"]').forEach(tab => {
 </script>
 
 <!-- ============ ONBOARDING WIZARD ============ -->
-<div id="wizard-overlay" class="wiz-overlay" role="dialog" aria-modal="true" aria-labelledby="wiz-title" hidden>
+<div id="wiz-overlay" class="wiz-overlay" role="dialog" aria-modal="true" aria-labelledby="wiz-title" hidden>
     <div class="wiz-backdrop" onclick="closeWizard()"></div>
     <div class="wiz-modal">
         <!-- Header -->
@@ -2174,8 +2174,8 @@ const VolLabel = {'1':'1 video/ay','2-5':'2-5 video/ay','6-10':'6-10 video/ay','
 const VolNum = {'1':1,'2-5':3,'6-10':8,'10+':12};
 
 function openWizard() {
-    const m = document.getElementById('wiz-overlay-no-no'); // typo guard
     const ov = document.getElementById('wiz-overlay');
+    if (!ov) return;
     ov.hidden = false;
     document.body.style.overflow = 'hidden';
     restoreState();
